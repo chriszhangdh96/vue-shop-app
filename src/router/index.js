@@ -6,6 +6,8 @@ import Index from '../views/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
+import Sousuo from '../views/Sousuo'
+
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
@@ -22,10 +24,11 @@ const routes = [
     component: HelloWorld
   },
   {
-    path: '/home',
-    name: 'home',
-    component: Home,
-    children: [
+    path:'/home',
+    redirect:'/index',
+    name:'home',
+    component:Home,
+    children:[
       {
         path: '/index',
         name: 'index',
@@ -57,7 +60,12 @@ const routes = [
     path:'/reg',
     name:'reg',
     component:Reg
-  }
+  },
+  {
+    path:'/sousuo',
+    name:'sousuo',
+    component:Sousuo
+  },
 ]
 
 // 创建路由对象

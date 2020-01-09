@@ -44,6 +44,9 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-    
+<style scoped>
+    #container{
+		margin-top: 46px;
+		margin-bottom: 50px;
+	}
 </style>
