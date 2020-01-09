@@ -6,6 +6,8 @@ import Index from '../views/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
+import Sousuo from '../views/Sousuo'
+
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,7 @@ const routes = [
   },
   {
     path:'/home',
+    redirect:'/index',
     name:'home',
     component:Home,
     children:[
@@ -43,7 +46,12 @@ const routes = [
         component:User
       }
     ]
-  }
+  },
+  {
+    path:'/sousuo',
+    name:'sousuo',
+    component:Sousuo
+  },
 ]
 
 // 创建路由对象
