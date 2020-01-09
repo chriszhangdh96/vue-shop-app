@@ -7,42 +7,56 @@ import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
 
+import Reg from '../views/login/Reg'
+import Login from '../views/login/Login'
+
+
 Vue.use(VueRouter)
 
 // 路由规则
 const routes = [
   {
-    path:'/',
-    redirect:'/home',
+    path: '/',
+    redirect: '/home',
     name: 'HelloWorld',
     component: HelloWorld
   },
   {
-    path:'/home',
-    name:'home',
-    component:Home,
-    children:[
+    path: '/home',
+    name: 'home',
+    component: Home,
+    children: [
       {
-        path:'/index',
-        name:'index',
-        component:Index
+        path: '/index',
+        name: 'index',
+        component: Index
       },
       {
-        path:'/category',
-        name:'category',
-        component:Category
+        path: '/category',
+        name: 'category',
+        component: Category
       },
       {
-        path:'/cart',
-        name:'cart',
-        component:Cart
+        path: '/cart',
+        name: 'cart',
+        component: Cart
       },
       {
-        path:'/user',
-        name:'user',
-        component:User
+        path: '/user',
+        name: 'user',
+        component: User,
       }
     ]
+  },
+  {
+    path:'/login',
+    name:'login',
+    component:Login
+  },
+  {
+    path:'/reg',
+    name:'reg',
+    component:Reg
   }
 ]
 
