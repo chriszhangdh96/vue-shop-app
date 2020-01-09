@@ -72,7 +72,4 @@ export default {
     width: 100%;
     height: 100%;
 }
-.index_floor .floor_group .floor_list div:nth-child(2),.index_floor .floor_group .floor_list navigator:nth-child(3){
-    /* border-bottom: 10px solid #fff; */
-}
 </style>
