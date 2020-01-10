@@ -112,10 +112,8 @@ export default {
           axios
             .post("http://api.cat-shop.penkuoer.com/api/v1/auth/reg", data)
             .then(res => {
-              console.log(res);
+              // console.log(res);
               if (res.data.code == "success") {
-
-                localStorage.setItem("token",res.data.token);
                 this.$router.push({
                   name: "login"
                 });
@@ -154,7 +152,7 @@ form {
   height: 46px;
   width: 100%;
   background: #fff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #aaa;
   line-height: 46px;
 }
 .reg-text,
