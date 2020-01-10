@@ -5,7 +5,7 @@
 		  :fixed="true"
 		/>
 
-        <div id="container">
+        <div id="container" >
             <!-- 视图容器 -->
             <router-view @toparent="getval"></router-view>
         </div>
@@ -35,8 +35,7 @@ export default {
         }
     },
     methods:{
-        getval(msg){
-            console.log(msg)
+        getval(msg){           
             this.title = msg
         }
     }
@@ -44,6 +43,10 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-    
+<style scoped>
+    #container{
+        margin-top: 60px;
+        height: 80px;
+        line-height: 80px
+    }
 </style>
