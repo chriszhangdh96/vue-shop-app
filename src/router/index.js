@@ -6,6 +6,7 @@ import Index from '../views/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
+import Detail from '../views/goods_detail.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     redirect:'/home',
     name: 'HelloWorld',
     component: HelloWorld
+  },
+  {
+    path:'detail',
+    name:'detail',
+    component:Detail
   },
   {
     path:'/home',

@@ -2,6 +2,7 @@
     <div>
         <!-- 首页 -->
         <h2>Index</h2>
+        <button @click="toXiang">进入详情</button>
     </div>
 </template>
 
@@ -13,8 +14,15 @@ export default {
             title:'首页'
         }
     },
+    methods:{
+        toXiang(){
+            this.$router.push({
+                name:'detail'
+            })
+        }
+    },
     mounted(){
-		this.$emit('toparent',this.title)
+        this.$emit('toparent',this.title)
 	}
 }
 </script>
