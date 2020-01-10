@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld'
 import Home from '../views/Home'
-import Index from '../views/Index'
+import Index from '../views/Index/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
 import Sousuo from '../views/Sousuo'
+import Detail from '../views/Detail'
 
 
 import Reg from '../views/login/Reg'
@@ -66,6 +67,11 @@ const routes = [
     name:'sousuo',
     component:Sousuo
   },
+  {
+    path:'/detail',
+    name:'detail',
+    component:Detail
+  }
 ]
 
 // 创建路由对象
