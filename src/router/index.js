@@ -11,7 +11,7 @@ import Sousuo from '../views/Sousuo'
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
-
+import Feedback from '../views/Feedback'
 
 Vue.use(VueRouter)
 
@@ -24,11 +24,11 @@ const routes = [
     component: HelloWorld
   },
   {
-    path:'/home',
-    redirect:'/index',
-    name:'home',
-    component:Home,
-    children:[
+    path: '/home',
+    redirect: '/index',
+    name: 'home',
+    component: Home,
+    children: [
       {
         path: '/index',
         name: 'index',
@@ -52,20 +52,24 @@ const routes = [
     ]
   },
   {
-    path:'/login',
-    name:'login',
-    component:Login
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
-    path:'/reg',
-    name:'reg',
-    component:Reg
+    path: '/reg',
+    name: 'reg',
+    component: Reg
   },
   {
-    path:'/sousuo',
-    name:'sousuo',
-    component:Sousuo
-  },
+    path: '/sousuo',
+    name: 'sousuo',
+    component: Sousuo
+  }, {
+    path: '/feedback',
+    name: 'feedback',
+    component: Feedback
+  }
 ]
 
 // 创建路由对象
