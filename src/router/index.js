@@ -6,16 +6,14 @@ import Index from '../views/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
-<<<<<<< HEAD
 import Sousuo from '../views/Sousuo'
 
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 
-=======
 import Detail from '../views/goods_detail.vue'
->>>>>>> cqh
+
 
 Vue.use(VueRouter)
 
@@ -28,7 +26,7 @@ const routes = [
     component: HelloWorld
   },
   {
-    path:'detail',
+    path:'/detail',
     name:'detail',
     component:Detail
   },

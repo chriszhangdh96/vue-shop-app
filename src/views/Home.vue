@@ -3,6 +3,7 @@
         <van-nav-bar
 		  :title="title" 
 		  :fixed="true"
+          class="nav"
 		/>
 
         <div id="container">
@@ -36,7 +37,7 @@ export default {
     },
     methods:{
         getval(msg){
-            console.log(msg)
+            //console.log(msg)
             this.title = msg
         }
     }
@@ -48,5 +49,10 @@ export default {
     #container{
 		margin-top: 46px;
 		margin-bottom: 50px;
-	}
+    }
+    .nav{
+        width: 100%;
+        height: 50px;
+        color: #940000
+    }
 </style>
