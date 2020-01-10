@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Search from '../components/Search'
-import Swiper from '../views/Swiper'
-import Nav from '../views/Nav'
-import Floors from '../views/Floors'
+import Search from '../../components/Search'
+import Swiper from './Swiper'
+import Nav from './Nav'
+import Floors from './Floors'
 
 
 export default {
