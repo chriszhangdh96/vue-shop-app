@@ -45,8 +45,7 @@ export default {
 
 <style scoped>
     #container{
-        margin-top: 60px;
-        height: 80px;
-        line-height: 80px
-    }
+		margin-top: 46px;
+		margin-bottom: 50px;
+	}
 </style>
