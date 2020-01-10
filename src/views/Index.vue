@@ -10,7 +10,7 @@ export default {
     name:'Index',
     data(){
         return{
-            title:'首页'
+            title:'首页',
         }
     },
     mounted(){
