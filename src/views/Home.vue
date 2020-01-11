@@ -36,7 +36,6 @@ export default {
     },
     methods:{
         getval(msg){
-            console.log(msg)
             this.title = msg
         }
     }
