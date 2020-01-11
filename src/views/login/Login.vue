@@ -1,12 +1,16 @@
 <template>
   <div class="login">
     <div class="log-top">
-      登录
+      <span @click="Index()">
+        <van-icon name="arrow-left" />
+      </span>
+      
+      <span>登录</span>
     </div>
     <div class="log-log">
       <form>
         <!-- 账号 -->
-        <div class="log-account">
+        <div class="log-account" ref="myuser">
           <div>
             <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
           </div>
@@ -21,7 +25,7 @@
           </div>
         </div>
         <!-- 密码 -->
-        <div class="log-pw">
+        <div class="log-pw" ref="mypass">
           <div><van-icon name="desktop-o" /></div>
           <input
             v-bind:type="type"
@@ -75,8 +79,6 @@
 
 <script>
 import axios from "axios";
-import { Field } from "vant";
-import { Icon } from "vant";
 export default {
   data() {
     return {
@@ -106,20 +108,27 @@ export default {
         name: "reg"
       });
     },
+    Index(){
+      this.$router.push({
+        name: "index"
+      });
+    }
+    ,
     userwrite() {
       if (this.username == "") {
-        this.isuserflag = this.isuserflag;
+        this.isuserflag = false;
       } else {
-        this.isuserflag = !this.isuserflag;
+        if (this.username.length >= 1) {
+          this.isuserflag = true;
+        }
       }
     },
     passwrite() {
       if (this.password == "") {
-        this.ispassflag = this.ispassflag;
+        this.ispassflag = false;
       } else {
-        this.ispassflag = !this.ispassflag;
-        if (this.ispassflag = true) {
-          
+        if (this.password.length >= 1) {
+          this.ispassflag = true;
         }
       }
     },
@@ -132,10 +141,27 @@ export default {
       this.iseyeflag = !this.iseyeflag;
     },
     ver() {
-      this.verflag = true;
-      this.verify = "验证完成";
-      this.styleVer.color = "green";
-      this.styleVer.background = "#eee";
+      if (
+        /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+        /^[0-9]{6}$/.test(this.password)
+      ) {
+        this.verflag = true;
+        this.verify = "验证完成";
+        this.styleVer.color = "green";
+        this.styleVer.background = "#eee";
+      } else {
+        if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
+        } else {
+          this.styleErr.display = "block";
+          this.errCount = "请输入正确账号";
+          if (/^[0-9]{6}$/.test(this.password)) {
+        } else {
+          this.styleErr.display = "block";
+          this.errCount = "请输入正确密码";
+        }
+        }
+        
+      }
     },
     cluser() {
       this.username = "";
@@ -145,6 +171,13 @@ export default {
       this.password = "";
       this.ispassflag = !this.ispassflag;
     },
+    /* userblur(){
+
+    },
+    userfocus(){
+
+    }
+    , */
     logBtn() {
       if (this.username == "") {
         this.styleErr.display = "block";
@@ -152,8 +185,9 @@ export default {
       } else {
         if (this.password == "") {
           this.styleErr.display = "block";
-          this.errCount = "请输入密码";
+          this.errCount = "密码由6位数字组成，没有英文，无需区分大小写";
         } else {
+          // 勾選
           if (!this.verflag) {
             this.styleErr.display = "block";
             this.errCount = "请点击验证";
@@ -175,6 +209,7 @@ export default {
                   console.log(res);
                   localStorage.setItem("token", res.data.token);
                   if (res.data.code == "success") {
+                    console.log(res)
                     this.$router.push({
                       name: "home"
                     });
@@ -186,12 +221,16 @@ export default {
           }
         }
       }
+      //
     }
   }
 };
 </script>
 
 <style scoped>
+html,body{
+  height:100%
+}
 .log-top {
   height: 44px;
   width: 100%;
@@ -199,7 +238,13 @@ export default {
   border-bottom: 1px solid #eee;
   line-height: 46px;
   margin-bottom: 12px;
+  position: relative;
 }
+.log-top span:nth-child(1){
+  position: absolute;
+  left:40px;
+  font-size:18px;
+} 
 form {
   width: 365px;
   height: 425px;

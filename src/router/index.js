@@ -12,7 +12,7 @@ import Detail from '../views/Detail'
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
-
+import Feedback from '../views/Feedback'
 
 
 
@@ -27,19 +27,13 @@ const routes = [
     component: HelloWorld
   },
   {
-    path:'/detail',
-    name:'detail',
-    component:Detail
-  },
-  {
     path:'/home',
     redirect:'/index',
     name:'home',
     component:Home,
-    children:[
+    children: [
       {
         path: '/index',
-        name: 'index',
         component: Index
       },
       {
@@ -60,14 +54,19 @@ const routes = [
     ]
   },
   {
-    path:'/login',
-    name:'login',
-    component:Login
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
-    path:'/reg',
-    name:'reg',
-    component:Reg
+    path: '/reg',
+    name: 'reg',
+    component: Reg
+  },
+  {
+    path: '/feedback',
+    name: 'feedback',
+    component: Feedback
   },
   {
     path:'/sousuo',
