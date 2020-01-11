@@ -8,17 +8,18 @@
         <!-- 邮箱 -->
         <div class="reg-">
           <div class="reg-t">
-            <div class="reg-bor">
+            <div class="reg-bor" ref="myuser">
               <input
                 class="reg-text"
                 type="text"
                 v-model="username"
-                placeholder="请输入邮箱地址"
+                placeholder="请输入邮箱地址" 
+                  @input="username1" @blur="username2" @focus="username3"
               />
             </div>
             <!-- 后缀 -->
-            <div class="reg-sel">
-              <input type="text" v-model="value" @click="flag()" />
+            <div class="reg-sel" @click="opflag()">
+              <input type="text" v-model="value"/>
               <div
                 class="reg-op"
                 v-show="isflag"
@@ -38,12 +39,13 @@
         </div>
         <!-- 密码 -->
         <div>
-          <div class="reg-bor">
+          <div class="reg-bor" ref="mypass">
             <input
               class="reg-word"
               type="password"
               v-model="password"
-              placeholder="请输入8-16位密码"
+              placeholder="请输入8-16位密码" 
+              @input="password1" @blur="password2" @focus="password3"
             />
           </div>
           <div class="reg-word-err">{{ passcount }}</div>
@@ -72,7 +74,7 @@ export default {
     return {
       username: "",
       password: "",
-      isflag: true,
+      isflag: false,
       value: "@163.com",
       usercount: "",
       passcount: "",
@@ -89,25 +91,78 @@ export default {
     onConfirm() {
       this.$refs.item.toggle();
     },
-    flag() {
-      this.isflag = !isflag;
+    opflag() {
+      this.isflag = !this.isflag;
     },
     regOp(val) {
       this.value = val;
     },
+    username1(){
+      if (this.username == "") {
+        this.usercount = '请输入正确账号'
+      }else{
+          this.$refs.myuser.style = 'border-color:#ccc'
+        this.usercount = ''
+      }
+    } 
+    ,
+    username2(){
+      this.$refs.myuser.style = 'border-color:#ccc'
+      if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
+        
+      }else{
+        this.usercount = '请输入正确账号'
+        this.$refs.myuser.style = 'border-color:red'
+      }
+    },
+    username3(){
+      this.$refs.myuser.style = 'border-color:yellow'
+      if (this.usercount='请输入正确账号') {
+        this.usercount = ''
+      }
+    }
+    ,
+    password1(){
+       if (this.password == "") {
+        this.passcount = '请输入正确密码'
+      }else{
+          this.$refs.mypass.style = 'border-color:#ccc'
+        this.passcount = ''
+      }
+    },
+    password2(){
+      this.$refs.mypass.style = 'border-color:#ccc'
+      if (/^[0-9]{6}$/.test(this.password)) {
+        
+      }else{
+        this.passcount = '请输入正确密码'
+        this.$refs.mypass.style = 'border-color:red'
+      }
+    },
+    password3(){
+      this.$refs.mypass.style = 'border-color:yellow'
+      if (this.passcount='请输入正确密码') {
+        this.passcount = ''
+      }
+    }
+    ,
     loginBtn() {
       if (this.username == "") {
-        this.usercount = "请输入正确邮箱";
+        this.usercount = "请输入正确账号";
+        this.$refs.myuser.style="border-color:red"
       } else {
+        this.usercount = ""
         if (this.password == "") {
-          this.passcount = "密码由8-16为字符组成，区分大小写";
+          this.passcount = "密码由6位数字组成，没有英文，无需区分大小写";
+          this.$refs.mypass.style="border-color:red"
         } else {
+          this.passcount = ""
           let data = {
-            userName: this.username,
-            password: this.password,
+            'userName': this.username,
+            'password': this.password,
             avatar:
               "http://pic.sogou.com/pics/recommend?category=%E6%90%9E%E7%AC%91&imageid=490864#%E6%90%9E%E7%AC%91%E4%BA%BA%E7%89%A9",
-            nickName: "搞笑"
+            nickName: '搞笑来了'
           };
           axios
             .post("http://api.cat-shop.penkuoer.com/api/v1/auth/reg", data)
@@ -118,7 +173,7 @@ export default {
                   name: "login"
                 });
               } else {
-                console.log("注册失败");
+                console.log(res.data.message);
               }
             });
         }
@@ -209,7 +264,7 @@ form {
 }
 .reg-op {
   position: absolute;
-  top: 48px;
+  top: 45px;
   left: -1px;
 }
 .reg-sel {
