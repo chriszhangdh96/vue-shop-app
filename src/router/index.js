@@ -81,6 +81,7 @@ const routes = [
     name:'detail',
     component:Detail
   }
+  
 ]
 
 // 创建路由对象

@@ -25,7 +25,11 @@ export default {
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/home/catitems')
         .then(res=>{
+<<<<<<< HEAD:src/views/Index/Nav.vue
             // console.log(res.data.message)
+=======
+          
+>>>>>>> wsl:src/views/Nav.vue
             this.list = res.data.message
         })
     }
