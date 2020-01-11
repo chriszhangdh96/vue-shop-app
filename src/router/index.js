@@ -14,6 +14,8 @@ import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 
+
+
 Vue.use(VueRouter)
 
 // 路由规则
@@ -25,14 +27,13 @@ const routes = [
     component: HelloWorld
   },
   {
-    path: '/home',
-    redirect: '/index',
-    name: 'home',
-    component: Home,
+    path:'/home',
+    redirect:'/index',
+    name:'home',
+    component:Home,
     children: [
       {
         path: '/index',
-        name: 'index',
         component: Index
       },
       {
@@ -63,10 +64,6 @@ const routes = [
     component: Reg
   },
   {
-    path: '/sousuo',
-    name: 'sousuo',
-    component: Sousuo
-  }, {
     path: '/feedback',
     name: 'feedback',
     component: Feedback

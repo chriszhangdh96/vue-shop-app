@@ -2,9 +2,9 @@
     <div>
 
         <van-grid :border="false" :column-num="4">
-            <van-grid-item 
-                v-for="item in list" 
-                :key="item.id" 
+            <van-grid-item
+                v-for="item in list"
+                :key="item.id"
             >
                 <van-image :src="item.image_src" />
             </van-grid-item>
@@ -25,7 +25,6 @@ export default {
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/home/catitems')
         .then(res=>{
-            // console.log(res.data.message)
             this.list = res.data.message
         })
     }

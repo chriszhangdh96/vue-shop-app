@@ -23,7 +23,7 @@ export default {
     name:'Index',
     data(){
         return{
-            title:'首页'
+            title:'首页',
         }
     },
     methods:{
@@ -36,7 +36,7 @@ export default {
         Floors
     },
     mounted(){
-		this.$emit('toparent',this.title)
+        this.$emit('toparent',this.title)
 	}
 }
 </script>
