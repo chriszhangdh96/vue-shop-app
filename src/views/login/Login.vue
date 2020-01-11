@@ -19,7 +19,6 @@
             placeholder="请输入账号"
             @input="userwrite()"
             v-model="username"
-            @blur=""
           />
           <div v-show="isuserflag" @click="cluser()">
             <van-icon name="cross" />
