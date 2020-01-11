@@ -8,6 +8,7 @@ import Cart from '../views/Cart'
 import User from '../views/User'
 import Sousuo from '../views/Sousuo'
 import Detail from '../views/Detail'
+import ProductList from '../views/ProductList'
 
 
 import Reg from '../views/login/Reg'
@@ -80,6 +81,11 @@ const routes = [
     path:'/detail',
     name:'detail',
     component:Detail
+  },
+  {
+    path:'/productlist',
+    name:'productlist',
+    component: ProductList
   }
 ]
 

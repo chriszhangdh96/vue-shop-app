@@ -40,7 +40,6 @@ export default {
             this.title = msg
         }
     }
-    
 }
 </script>
 

@@ -36,7 +36,7 @@ export default {
         Floors
     },
     mounted(){
-		this.$emit('toparent',this.title)
+        this.$emit('toparent',this.title)
 	}
 }
 </script>
