@@ -66,6 +66,7 @@ const routes = [
     name:'sousuo',
     component:Sousuo
   },
+  
 ]
 
 // 创建路由对象

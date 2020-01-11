@@ -26,7 +26,7 @@ export default {
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/home/swiperdata')
         .then(res=>{
-            console.log(res.data.message)
+           
             this.list =  res.data.message
         })
     }
