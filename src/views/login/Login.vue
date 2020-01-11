@@ -10,7 +10,7 @@
     <div class="log-log">
       <form>
         <!-- 账号 -->
-        <div class="log-account">
+        <div class="log-account" ref="myuser">
           <div>
             <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
           </div>
@@ -19,13 +19,14 @@
             placeholder="请输入账号"
             @input="userwrite()"
             v-model="username"
+            @blur=""
           />
           <div v-show="isuserflag" @click="cluser()">
             <van-icon name="cross" />
           </div>
         </div>
         <!-- 密码 -->
-        <div class="log-pw">
+        <div class="log-pw" ref="mypass">
           <div><van-icon name="desktop-o" /></div>
           <input
             v-bind:type="type"
@@ -116,18 +117,19 @@ export default {
     ,
     userwrite() {
       if (this.username == "") {
-        this.isuserflag = this.isuserflag;
+        this.isuserflag = false;
       } else {
-        this.isuserflag = !this.isuserflag;
+        if (this.username.length >= 1) {
+          this.isuserflag = true;
+        }
       }
     },
     passwrite() {
       if (this.password == "") {
-        this.ispassflag = this.ispassflag;
+        this.ispassflag = false;
       } else {
-        this.ispassflag = !this.ispassflag;
-        if (this.ispassflag = true) {
-          
+        if (this.password.length >= 1) {
+          this.ispassflag = true;
         }
       }
     },
@@ -140,10 +142,27 @@ export default {
       this.iseyeflag = !this.iseyeflag;
     },
     ver() {
-      this.verflag = true;
-      this.verify = "验证完成";
-      this.styleVer.color = "green";
-      this.styleVer.background = "#eee";
+      if (
+        /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+        /^[0-9]{6}$/.test(this.password)
+      ) {
+        this.verflag = true;
+        this.verify = "验证完成";
+        this.styleVer.color = "green";
+        this.styleVer.background = "#eee";
+      } else {
+        if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
+        } else {
+          this.styleErr.display = "block";
+          this.errCount = "请输入正确账号";
+          if (/^[0-9]{6}$/.test(this.password)) {
+        } else {
+          this.styleErr.display = "block";
+          this.errCount = "请输入正确密码";
+        }
+        }
+        
+      }
     },
     cluser() {
       this.username = "";
@@ -153,6 +172,13 @@ export default {
       this.password = "";
       this.ispassflag = !this.ispassflag;
     },
+    /* userblur(){
+
+    },
+    userfocus(){
+
+    }
+    , */
     logBtn() {
       if (this.username == "") {
         this.styleErr.display = "block";
@@ -160,8 +186,9 @@ export default {
       } else {
         if (this.password == "") {
           this.styleErr.display = "block";
-          this.errCount = "请输入密码";
+          this.errCount = "密码由6位数字组成，没有英文，无需区分大小写";
         } else {
+          // 勾選
           if (!this.verflag) {
             this.styleErr.display = "block";
             this.errCount = "请点击验证";
@@ -195,6 +222,7 @@ export default {
           }
         }
       }
+      //
     }
   }
 };
