@@ -49,12 +49,8 @@ export default {
             this.flag=true
         }
     }
-<<<<<<< HEAD
-    }
-
-=======
 }
->>>>>>> zdh
+
 </script>
 
 <style scoped>
