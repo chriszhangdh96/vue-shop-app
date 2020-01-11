@@ -2,16 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld'
 import Home from '../views/Home'
-import Index from '../views/Index'
+import Index from '../views/Index/Index'
 import Category from '../views/Category'
 import Cart from '../views/Cart'
 import User from '../views/User'
 import Sousuo from '../views/Sousuo'
+import Detail from '../views/Detail'
 
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
-
+import Feedback from '../views/Feedback'
 
 Vue.use(VueRouter)
 
@@ -24,11 +25,11 @@ const routes = [
     component: HelloWorld
   },
   {
-    path:'/home',
-    redirect:'/index',
-    name:'home',
-    component:Home,
-    children:[
+    path: '/home',
+    redirect: '/index',
+    name: 'home',
+    component: Home,
+    children: [
       {
         path: '/index',
         name: 'index',
@@ -52,20 +53,34 @@ const routes = [
     ]
   },
   {
-    path:'/login',
-    name:'login',
-    component:Login
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
-    path:'/reg',
-    name:'reg',
-    component:Reg
+    path: '/reg',
+    name: 'reg',
+    component: Reg
+  },
+  {
+    path: '/sousuo',
+    name: 'sousuo',
+    component: Sousuo
+  }, {
+    path: '/feedback',
+    name: 'feedback',
+    component: Feedback
   },
   {
     path:'/sousuo',
     name:'sousuo',
     component:Sousuo
   },
+  {
+    path:'/detail',
+    name:'detail',
+    component:Detail
+  }
 ]
 
 // 创建路由对象

@@ -1,7 +1,11 @@
 <template>
   <div class="login">
     <div class="log-top">
-      登录
+      <span @click="Index()">
+        <van-icon name="arrow-left" />
+      </span>
+      
+      <span>登录</span>
     </div>
     <div class="log-log">
       <form>
@@ -75,8 +79,6 @@
 
 <script>
 import axios from "axios";
-import { Field } from "vant";
-import { Icon } from "vant";
 export default {
   data() {
     return {
@@ -106,6 +108,12 @@ export default {
         name: "reg"
       });
     },
+    Index(){
+      this.$router.push({
+        name: "index"
+      });
+    }
+    ,
     userwrite() {
       if (this.username == "") {
         this.isuserflag = this.isuserflag;
@@ -175,6 +183,7 @@ export default {
                   console.log(res);
                   localStorage.setItem("token", res.data.token);
                   if (res.data.code == "success") {
+                    console.log(res)
                     this.$router.push({
                       name: "home"
                     });
@@ -192,6 +201,9 @@ export default {
 </script>
 
 <style scoped>
+html,body{
+  height:100%
+}
 .log-top {
   height: 44px;
   width: 100%;
@@ -199,7 +211,13 @@ export default {
   border-bottom: 1px solid #eee;
   line-height: 46px;
   margin-bottom: 12px;
+  position: relative;
 }
+.log-top span:nth-child(1){
+  position: absolute;
+  left:40px;
+  font-size:18px;
+} 
 form {
   width: 365px;
   height: 425px;
