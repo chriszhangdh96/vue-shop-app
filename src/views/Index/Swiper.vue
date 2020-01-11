@@ -27,11 +27,8 @@ export default {
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/home/swiperdata')
         .then(res=>{
-<<<<<<< HEAD:src/views/Swiper.vue
             //console.log(res.data.message)
-=======
             // console.log(res.data.message)
->>>>>>> 13bd8196607d6f2d83854a368b5e6832ef767b23:src/views/Index/Swiper.vue
             this.list =  res.data.message
         })
     }

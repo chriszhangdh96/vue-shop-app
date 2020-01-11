@@ -41,10 +41,11 @@
 
         <!-- 底部商品导航 -->
         <van-goods-action>
+            <div class="ball" v-show="flag">{{$store.getters.getAllCount}}</div>
             <van-goods-action-icon icon="service-o" text="联系客服" />
             <van-goods-action-icon icon="share" text="分享"  />
-            <van-goods-action-icon icon="shopping-cart-o" text="购物车"  />
-            <van-goods-action-button type="warning" text="加入购物车" />
+            <van-goods-action-icon icon="shopping-cart-o" @click="tocart" text="购物车"  />
+            <van-goods-action-button type="warning" @click="tocar" text="加入购物车" />
             <van-goods-action-button type="danger" text="立即购买" />
         </van-goods-action>
 
@@ -65,11 +66,36 @@ export default {
     name:'Detail',
     data(){
         return {
+            id:'',
+            count:1,
+            price:'',
+            pimg:'',
+            pname:'',
+            // selected:true,
             list: [],
             isCollect: false,
+            flag:true
         }
     },
     methods:{
+        tocart(){
+            this.$router.push({
+                name:'cart'
+            })
+        },
+        tocar(){
+            var goodsinfo={
+                id:this.id,
+                count:this.count,
+                price:this.price,
+                pimg:this.pimg,
+                pname:this.pname,
+                selected:true
+            }
+            this.$store.commit('addTocar',goodsinfo)
+            //console.log(goodsinfo)
+            this.flag=true
+        },
         onClickLeft(){
             this.$router.go(-1)
         },
@@ -105,8 +131,24 @@ export default {
             }
         }).then(res=>{
             console.log(res.data.message)
+            this.id=res.data.message.cat_id
+            this.price=res.data.message.goods_price
             this.list = res.data.message
+            this.pimg=res.data.message.goods_big_logo
+            this.pname=res.data.message.goods_name
         })
+    },
+    created(){
+        // if(this.$store.getters.getAllCount==0){
+        //     this.flag=false
+        // }else{
+        //     this.flag=true
+        // }
+    },
+    watch:{
+        '$route'(newval){
+            
+        }
     }
     
 }
@@ -181,5 +223,16 @@ export default {
         line-height: 30px;
         border-radius:50%;
         background: #fff 
+    }
+    .ball{
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 30px;
+        right: 235px;
+        opacity: 0.9;
+        font-size: 12px;
     }
 </style>

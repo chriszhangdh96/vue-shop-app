@@ -13,7 +13,7 @@ import Detail from '../views/Detail'
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 
-import Detail from '../views/goods_detail.vue'
+
 
 
 Vue.use(VueRouter)
