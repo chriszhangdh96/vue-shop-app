@@ -26,6 +26,7 @@
                             <li 
                                 v-for="item in list"
                                 :key="item.id"
+                                @click="todetail(item.goods_id)"
                             >
                                 <img :src="item.goods_small_logo?item.goods_small_logo:'http://b2bfile.91jyh.com/files/productpicture/c89d6633-99c0-4fc4-a733-b3766d4b484a_%e6%9a%82%e6%97%a0%e5%9b%be%e7%89%87.jpg'">
                                 <div class="pinfo">
@@ -57,7 +58,7 @@ export default {
             list:[],
             count: 0,
             pagenum: 1,
-            isLoading: false
+            isLoading: false,
         }
     },
     components:{
@@ -72,8 +73,8 @@ export default {
             this.pagenum++
             axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
                 params:{
-                    query:'',
-                    cid:'',
+                    // query:'',
+                    cid: this.$route.query.id,
                     pagenum:this.pagenum,
                     pagesize:6
                 }
@@ -87,13 +88,16 @@ export default {
                 this.count++;
             }, 1800); 
             
+        },
+        todetail(id){
+            this.$router.push({name:'detail',query:{id:id}})
         }
     },
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
             params:{
-                query:'',
-                cid:'',
+                // query:'',
+                cid: this.$route.query.id,
                 pagenum:1,
                 pagesize:6
             }
