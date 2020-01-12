@@ -5,4 +5,5 @@
 
 ## day1 init 
 
-## day02  hmy -- login accomplish   - reg have in hand  - feedback have in hand 
+## day02  hmy -- login accomplish   - reg have in hand  - feedback have in 
+ 

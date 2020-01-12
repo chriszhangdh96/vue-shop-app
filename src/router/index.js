@@ -12,6 +12,7 @@ import Collect from '../views/Collect'
 import Cang from '../views/Cang'
 import remai from '../views/shoucang/remai.vue'
 import jijiang from '../views/shoucang/jijiang.vue'
+import ProductList from '../views/ProductList'
 
 
 import Reg from '../views/login/Reg'
@@ -39,6 +40,7 @@ const routes = [
       {
         path: '/index',
         name:'index',
+        name:'home',
         component: Index
       },
       {
@@ -101,6 +103,11 @@ const routes = [
       name:'jijiang',
       component:jijiang
     }]
+  },
+  {
+    path:'/productlist',
+    name:'productlist',
+    component: ProductList
   }
 ]
 

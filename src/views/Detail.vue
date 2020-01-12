@@ -17,8 +17,9 @@
                 :height="280"
             >
                 <van-swipe-item v-for="item in list.pics" :key="item.id" >
-                    <img :src="item.pics_big_url" @click="swiperImgClick(item.pics_big_url)">
+                    <img :src="item.pics_big" @click="swiperImgClick(item.pics_big_url)">
                 </van-swipe-item>
+
             </van-swipe>
 
             <!-- 商品简介 -->
@@ -231,7 +232,7 @@ export default {
     }
 
    .shoucang .van-icon{
-       font-size:19px
+       font-size:25px
     }
 
     h2{

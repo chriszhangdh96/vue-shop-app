@@ -9,7 +9,7 @@
             @click="todetail(item.id)"
         >
         <div slot="footer">
-            <van-button size="mini" type="danger" @click="removeshop(item.id,index)">取消收藏</van-button>
+            <van-button size="mini" type="danger" @click.stop="removeshop(item.id,index)">取消收藏</van-button>
         </div>
         </van-card>
     </div>
@@ -40,7 +40,7 @@ export default {
     },
     created(){
         this.shopList=JSON.parse(localStorage.getItem('shop'))
-        console.log(this.shopList)
+        //console.log(this.shopList)
     }
 }
 </script>
