@@ -96,7 +96,7 @@ export default {
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
             params:{
-                // query:'',
+                query:'',
                 cid: this.$route.query.id,
                 pagenum:1,
                 pagesize:6
