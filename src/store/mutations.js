@@ -49,6 +49,7 @@ var mutations = {
         state.car.some(item=>{
             if(item.id==info.id){
                 item.selected=info.selected
+                return true
             }
         })
 
@@ -70,6 +71,22 @@ var mutations = {
 
         localStorage.setItem('car', JSON.stringify(state.car));
     },
+
+    //收藏该商品
+    addToshop(state,goodsshop){
+        state.shop.push(goodsshop)
+        localStorage.setItem('shop',JSON.stringify(state.shop))
+    },
+    //删除收藏的商品
+    removeshop(state,id){
+        state.shop.some((item,index)=>{
+            if(item.id==id){
+                state.shop.splice(index,1)
+                return true
+            }
+        })
+        localStorage.setItem('shop',JSON.stringify(state.shop))
+    }
 }
 
 export default mutations

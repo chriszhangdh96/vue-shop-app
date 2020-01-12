@@ -22,6 +22,8 @@ var getters = {
         })
         return o
     },
+
+    //
     getgoodscountandmount(state){
         var o={
             count:0,//勾选的数量

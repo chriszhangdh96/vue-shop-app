@@ -16,9 +16,9 @@
     </div>
     <div class="u-top">
         <ul>
-            <li v-for="item in listsc" :key="item.index">
+            <li v-for="(item,index) in listsc" :key="item.index">
                 <span>1</span>
-                <div class="sc">{{item.name}}</div>
+                <div class="sc" @click="tocollect(index)">{{item.name}}</div>
             </li>
         </ul>
     </div>
@@ -113,8 +113,14 @@ export default {
         //庆贺大佬的创作  refs  一定要记住
         // this.$refs.clo.style = "color:#f00"
         this.active = ''
+    },
+    tocollect(index){
+      if(index==1){
+        this.$router.push({
+          name:'cang'
+        })
+      }
     }
-    
   }
 };
 </script>

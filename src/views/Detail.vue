@@ -27,7 +27,7 @@
                 <div class="shopinfo">
                     <div class="goodname">{{list.goods_name}}</div>
                     <div class="shoucang">
-                        <van-icon :name="isCollect?'star':'star-o'" color="red" @click="isCollect=!isCollect"/>
+                        <van-icon :name="isCollect?'star':'star-o'" color="red" @click="tocollect"/>
                         <span>收藏</span>
                     </div>
                 </div>
@@ -96,6 +96,23 @@ export default {
             //console.log(goodsinfo)
             this.flag=true
         },
+        tocollect(){
+            this.isCollect=!this.isCollect
+            if(this.isCollect){
+                //console.log('收藏了')
+                var goodsshop={
+                    id:this.id,
+                    price:this.price,
+                    pname:this.pname,
+                    pimg:this.pimg,
+                    isCollect:true
+                }
+                this.$store.commit('addToshop',goodsshop)
+            }else{
+                //console.log('取消收藏')
+                this.$store.commit('removeshop',this.id)
+            }
+        },
         onClickLeft(){
             this.$router.go(-1)
         },
@@ -112,7 +129,6 @@ export default {
         }
     },
     mounted(){
-        
         let totopBtn = document.querySelector('.totop')
 
         window.onscroll = function(){
@@ -124,18 +140,29 @@ export default {
                 }
             }
         }
-       
         axios.get('https://api.zbztb.cn/api/public/v1/goods/detail',{
             params:{
                 goods_id: this.$route.query.id
             }
         }).then(res=>{
-            console.log(res.data.message)
-            this.id=res.data.message.cat_id
+            //console.log(res.data.message)
+            this.id=res.data.message.goods_id
             this.price=res.data.message.goods_price
             this.list = res.data.message
             this.pimg=res.data.message.goods_big_logo
             this.pname=res.data.message.goods_name
+
+
+            var shop=JSON.parse(localStorage.getItem('shop'))
+            //console.log(shop)
+            if(shop){
+                shop.forEach(item=>{
+                if(item.id==this.id){
+                    this.isCollect=item.isCollect
+                }
+            })
+            }
+            
         })
     },
     created(){
@@ -144,6 +171,9 @@ export default {
         // }else{
         //     this.flag=true
         // }
+
+        
+
     },
     watch:{
         '$route'(newval){
