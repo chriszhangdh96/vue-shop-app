@@ -6,6 +6,9 @@ var getters = {
         })
         return c
     },
+    getshoplistlength(state){
+        return state.shop.length
+    },
     getgoodscount(state){
         var o={}
         state.car.forEach(item=>{
