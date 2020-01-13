@@ -1,4 +1,5 @@
 <template>
+
   <div class="fd">
     <div class="fd-top">
       <van-nav-bar title="意见反馈" left-arrow @click-left="onClickLeft" />
@@ -54,6 +55,7 @@
       </div>
     </div>
   </div>
+ 
 </template>
 
 <script>
