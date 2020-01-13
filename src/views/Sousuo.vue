@@ -53,8 +53,9 @@ export default {
 				}
 			})
 			.then(res=>{
-                console.log(res.data.message)
+               
                 this.list = res.data.message
+               
 			})
         },
         detail(id){

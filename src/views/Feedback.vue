@@ -1,4 +1,5 @@
 <template>
+
   <div class="fd">
     <div class="fd-top">
       <van-nav-bar title="意见反馈" left-arrow @click-left="onClickLeft" />
@@ -38,8 +39,6 @@
                   v-model="fileList"
                   multiple
                   preview-size="50px"
-
-                  
                 />
               </div>
             </div>
@@ -54,6 +53,7 @@
       </div>
     </div>
   </div>
+ 
 </template>
 
 <script>
@@ -92,8 +92,10 @@ export default {
 
 <style scoped>
 html,body{
-  height:100%;
-  background: #eee;
+  height:100%
+}
+#app{
+  height:100%
 }
 .fd {
   background: #eee;
