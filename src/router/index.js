@@ -8,7 +8,8 @@ import Cart from '../views/Cart'
 import User from '../views/User'
 import Sousuo from '../views/Sousuo'
 import Detail from '../views/Detail'
-
+import Order from '../views/Order'
+import Goods_list from '../views/Goods_list'
 
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
@@ -66,7 +67,8 @@ const routes = [
     path: '/sousuo',
     name: 'sousuo',
     component: Sousuo
-  }, {
+  }, 
+  {
     path: '/feedback',
     name: 'feedback',
     component: Feedback
@@ -74,14 +76,26 @@ const routes = [
   {
     path:'/sousuo',
     name:'sousuo',
-    component:Sousuo
+    component:Sousuo,
+  
+     
   },
   {
     path:'/detail',
     name:'detail',
     component:Detail
-  }
-  
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component:Order
+  },
+   {
+      path: '/goods_list',
+      name: 'goods_list',
+      component:Goods_list
+    },
+    
 ]
 
 // 创建路由对象

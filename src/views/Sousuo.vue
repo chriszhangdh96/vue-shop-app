@@ -51,8 +51,8 @@ export default {
 				}
 			})
 			.then(res=>{
-                
                 this.list = res.data.message
+                console.log(res.data.message)
 			})
         }
     }
