@@ -34,6 +34,7 @@ const routes = [
     children: [
       {
         path: '/index',
+        name:'index',
         component: Index
       },
       {
