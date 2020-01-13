@@ -38,8 +38,6 @@
                   v-model="fileList"
                   multiple
                   preview-size="50px"
-
-                  
                 />
               </div>
             </div>
@@ -92,8 +90,10 @@ export default {
 
 <style scoped>
 html,body{
-  height:100%;
-  background: #eee;
+  height:100%
+}
+#app{
+  height:100%
 }
 .fd {
   background: #eee;
