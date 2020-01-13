@@ -14,6 +14,7 @@
             show-action
             @cancel="onCancel"
             @input="getval"
+            
         />
 
         <van-cell
@@ -21,6 +22,7 @@
             :key="item.goods_id"
             :title="item.goods_name"
             class="info"
+            @click="detail(item.goods_id)"
         />
         
     </div>    
@@ -51,8 +53,12 @@ export default {
 				}
 			})
 			.then(res=>{
+                console.log(res.data.message)
                 this.list = res.data.message
 			})
+        },
+        detail(id){
+            this.$router.push({name:'detail',query:{id:id}})
         }
     }
 }

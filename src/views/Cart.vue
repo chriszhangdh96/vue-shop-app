@@ -18,6 +18,7 @@
             <img
             :src="item.pimg"
             class="pimg"
+            @click="todetail(item.id)"
             />
             <div class="info">
                 <h3>{{item.pname}}</h3>
@@ -42,9 +43,9 @@
         </div>
 
         <div class="jiesusan" v-show="flag">
-            <van-checkbox v-model="checked" class="xuan" @change="quan">全选</van-checkbox>
+            <van-checkbox v-model="checked" class="xuan" @click="quan">全选</van-checkbox>
             <div class="jia">总价：{{$store.getters.getgoodscountandmount.amout}}</div>
-            <van-button type="danger" class="btn">去结算({{$store.getters.getAllCount}})</van-button>
+            <van-button type="danger" class="btn">去结算({{$store.getters.getgoodscountandmount.count}})</van-button>
         </div>
     </div>
 </template>
@@ -98,25 +99,56 @@ export default {
             //console.log(id)
             //console.log(this.$refs.mychecked[index].value)
             this.$store.commit('updatagoodsselected',{id,selected:this.$refs.mychecked[index].value})
+            this.checked=true
+            this.carlist.some(item=>{
+                if(item.selected==false){
+                    this.checked=false
+                }
+            })
+
+            
         },
         //全选
         quan(){
+            // if(this.checked){
+            //     for(var i=0;i<this.$refs.mychecked.length;i++){
+            //         console.log(this.$refs.mychecked[i].value)
+            //         this.$refs.mychecked[i].value=
+
+            //     }
+            // }
             //console.log(this.$refs.mychecked)
             
-            // if(this.checked){
-            //     console.log(this.checked)
-            //     this.$store.commit('updateGettersGoodsChecked', true);
-            // }else{
-            //     console.log(222)
-            //     this.$store.commit('updateGettersGoodsChecked', false);
-            // }
+            if(!this.checked){
+                //console.log(this.checked)
+                this.$store.commit('updateGettersGoodsChecked', true);
+                this.carlist.forEach(item=>{
+                    item.selected=true
+                })
+            }else{
+                //console.log(222)
+                this.$store.commit('updateGettersGoodsChecked', false);
+                this.carlist.forEach(item=>{
+                    item.selected=false
+                })
+            }
+        },
+        todetail(id){
+            this.$router.push({
+                name:'detail',
+                query:{
+                    id:id
+                }
+            })
         }
     },
     created(){
          this.carlist=JSON.parse(localStorage.getItem('car'))
             //console.log(this.carlist)
-            if(this.carlist.length==0){
-               this.flag=false
+            if(this.carlist){
+               this.flag=true
+            }else{
+                this.flag=false
             }
     },
     mounted(){

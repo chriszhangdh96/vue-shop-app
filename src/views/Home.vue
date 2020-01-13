@@ -49,7 +49,7 @@ export default {
             this.flag=true
         }
     }
-    }
+}
 
 </script>
 

@@ -8,6 +8,11 @@ import Cart from '../views/Cart'
 import User from '../views/User'
 import Sousuo from '../views/Sousuo'
 import Detail from '../views/Detail'
+import Collect from '../views/Collect'
+import Cang from '../views/Cang'
+import remai from '../views/shoucang/remai.vue'
+import jijiang from '../views/shoucang/jijiang.vue'
+import ProductList from '../views/ProductList'
 
 
 import Reg from '../views/login/Reg'
@@ -35,6 +40,10 @@ const routes = [
       {
         path: '/index',
         name:'index',
+<<<<<<< HEAD
+=======
+        name:'home',
+>>>>>>> hmy
         component: Index
       },
       {
@@ -78,6 +87,30 @@ const routes = [
     path:'/detail',
     name:'detail',
     component:Detail
+  },
+  //收藏页面
+  {
+    path:'/collect',
+    name:'collect',
+    component:Collect,
+    children:[{
+      path:'/cang',
+      name:'cang',
+      component:Cang
+    },{
+      path:'/remai',
+      name:'remai',
+      component:remai
+    },{
+      path:'/jijiang',
+      name:'jijiang',
+      component:jijiang
+    }]
+  },
+  {
+    path:'/productlist',
+    name:'productlist',
+    component: ProductList
   }
 ]
 

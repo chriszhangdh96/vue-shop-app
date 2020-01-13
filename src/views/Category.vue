@@ -14,8 +14,8 @@
             <div class="right">
                <div class="right_title" v-for="v in rightList" :key="v.id">
                    <h3>{{v.cat_name}}</h3>
-                   <div class="right_conter" v-for="i in v.children" :key="i.id">
-                       <img :src="i.cat_icon"/>
+                   <div class="right_conter" v-for="i in v.children" :key="i.id" @click="toprolist(i.cat_id)">
+                       <img :src="i.cat_icon" />
                        <p>{{i.cat_name}}</p>
                    </div>
                </div>
@@ -49,6 +49,9 @@ export default {
         aaa(i){
             // this.index=i
             this.xuanzhong=i
+        },
+        toprolist(id){
+            this.$router.push({name:'productlist',query:{id:id}})
         }
     },
     mounted(){
@@ -59,7 +62,7 @@ export default {
             this.leftList=this.zong.map(v=>v.cat_name)
             //console.log(this.leftList)
             this.rightList=this.zong[this.index].children
-            //console.log(this.rightList)
+            // console.log(this.rightList)
         })
     },
     components:{
