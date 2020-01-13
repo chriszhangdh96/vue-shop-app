@@ -189,6 +189,9 @@ export default {
 </script>
 
 <style scoped>
+html,body{
+  height:100%
+}
 .reg {
   display: flex;
   flex-direction: column;

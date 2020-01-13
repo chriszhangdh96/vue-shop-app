@@ -1,11 +1,12 @@
 <template>
     <div>
-      <van-nav-bar
-        title="搜索"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-    />
+        <!-- 搜索页面 -->
+        <van-nav-bar
+            title="搜索"
+            left-text="返回"
+            left-arrow
+            @click-left="onClickLeft"
+        />
 
         <van-search
             v-model="value"
@@ -13,13 +14,15 @@
             show-action
             @cancel="onCancel"
             @input="getval"
+            
         />
 
-          <van-cell
+        <van-cell
             v-for="item in list"
             :key="item.goods_id"
             :title="item.goods_name"
             class="info"
+            @click="detail(item.goods_id)"
         />
         
     </div>    
@@ -53,15 +56,25 @@ export default {
                 console.log(res.data.message)
                 this.list = res.data.message
 			})
+        },
+        detail(id){
+            this.$router.push({name:'detail',query:{id:id}})
         }
     }
 }
 </script>
 
 <style scoped>
+    .van-cell{
+        background-color: #eee;
+    }
     .info .van-cell__title{
         white-space:nowrap; 
         overflow:hidden; 
         text-overflow:ellipsis;
+        text-align: left;
     }
+
+
+
 </style>
