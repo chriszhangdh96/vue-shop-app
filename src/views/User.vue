@@ -16,9 +16,21 @@
     </div>
     <div class="u-top">
         <ul>
-            <li v-for="(item,index) in listsc" :key="item.index">
-                <span>1</span>
-                <div class="sc" @click="tocollect(index)">{{item.name}}</div>
+            <li>
+                <span></span>
+                <div class="sc">收藏的店铺</div>
+            </li>
+            <li>
+                <span></span>
+                <div class="sc" @click="tocollect()">收藏的商品</div>
+            </li>
+            <li>
+                <span></span>
+                <div class="sc">关注的商品</div>
+            </li>
+            <li>
+                <span></span>
+                <div class="sc">我的足迹</div>
             </li>
         </ul>
     </div>
@@ -46,7 +58,7 @@
           <span>联系客服</span>
           <span>400-168-4000</span>
         </li>
-        <li @click="tofeedback " :class="tofeedback?'changeMouseOver':''">
+        <li @click="tofeedback">
           意见反馈
           <span>
             <van-icon name="arrow" />
@@ -82,12 +94,12 @@ export default {
       active: 0,
       flag:'',
       mouseOver:'false',
-      listsc:[
-          {index:0,name:'收藏店铺'},
-          {index:1,name:'收藏的商品'},
-          {index:2,name:'关注的商品'},
-          {index:3,name:'我的足迹'},
-      ],
+      // listsc:[
+      //     {index:0,name:'收藏店铺'},
+      //     {index:1,name:'收藏的商品'},
+      //     {index:2,name:'关注的商品'},
+      //     {index:3,name:'我的足迹'},
+      // ],
       show: false,  
       flag2:'',
       fileList: [
@@ -112,12 +124,12 @@ export default {
         name: "login"
       });
     },
-    changeMouseOver(){
-        //庆贺大佬的创作  refs  一定要记住
-        // this.$refs.clo.style = "color:#f00"
-        // this.active = 'color:#f00'
-        this.mouseOver =!this.mouseOver
-    },
+    // changeMouseOver(){
+    //     //庆贺大佬的创作  refs  一定要记住
+    //     // this.$refs.clo.style = "color:#f00"
+    //     // this.active = 'color:#f00'
+    //     this.mouseOver =!this.mouseOver
+    // },
     mouseLeave(){
         console.log(2)
         //庆贺大佬的创作  refs  一定要记住
