@@ -150,6 +150,9 @@ export default {
                         localStorage.setItem('topaylist',JSON.stringify(topaylist))
                         //console.log(topaylist)
                 }
+            });
+            this.$router.push({
+                name:'pay'
             })
         }
     },
