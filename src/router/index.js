@@ -20,7 +20,7 @@ import Goods_list from '../views/Goods_list'
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
-
+import Pay from '../views/Pay'
 
 
 Vue.use(VueRouter)
@@ -42,10 +42,7 @@ const routes = [
       {
         path: '/index',
         name:'index',
-<<<<<<< HEAD
-=======
         name:'home',
->>>>>>> hmy
         component: Index
       },
       {
@@ -131,7 +128,11 @@ const routes = [
       name: 'goods_list',
       component:Goods_list
     },
-    
+    {
+      path:'/pay',
+      name:'pay',
+      component:Pay
+    }
 ]
 
 // 创建路由对象

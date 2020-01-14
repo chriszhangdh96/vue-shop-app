@@ -45,7 +45,7 @@
         <div class="jiesusan" v-show="flag">
             <van-checkbox v-model="checked" class="xuan" @click="quan">全选</van-checkbox>
             <div class="jia">总价：{{$store.getters.getgoodscountandmount.amout}}</div>
-            <van-button type="danger" class="btn">去结算({{$store.getters.getgoodscountandmount.count}})</van-button>
+            <van-button type="danger" class="btn" @click="pay">去结算({{$store.getters.getgoodscountandmount.count}})</van-button>
         </div>
     </div>
 </template>
@@ -65,6 +65,12 @@ export default {
         }
     },
     methods:{
+        pay(){
+        this.$router.push({
+        name: "pay"
+      })
+        }
+        ,
         getgoodslist(){
             this.carlist=localStorage.getItem('car')
             console.log(carlist)
