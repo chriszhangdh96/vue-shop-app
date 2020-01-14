@@ -44,7 +44,7 @@
               class="reg-word"
               type="password"
               v-model="password"
-              placeholder="请输入8-16位密码" 
+              placeholder="请输入位6密码" 
               @input="password1" @blur="password2" @focus="password3"
             />
           </div>

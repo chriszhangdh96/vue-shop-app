@@ -62,6 +62,12 @@ export default {
         }
     },
     methods:{
+        pay(){
+        this.$router.push({
+        name: "pay"
+      })
+        }
+        ,
         getgoodslist(){
             this.carlist=localStorage.getItem('car')
             console.log(carlist)
@@ -150,6 +156,9 @@ export default {
                         localStorage.setItem('topaylist',JSON.stringify(topaylist))
                         //console.log(topaylist)
                 }
+            });
+            this.$router.push({
+                name:'pay'
             })
         }
     },

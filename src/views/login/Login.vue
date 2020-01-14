@@ -68,7 +68,7 @@
             v-model="checked"
             shape="square"
           ></van-checkbox>
-          <p>同意并遵守<a>&nbsp;《服务条款》</a> 和&nbsp;<a>《隐私条例》</a></p>
+          <p>同意并遵守<a>&nbsp;《服务条款》</a> 和&nbsp;<a @click="ax">《隐私条例》</a></p>
         </div>
         <div @click="reg()" class="log-ve">忘记密码？</div>
         <div class="log-ac">还没有账号？<a @click="reg()">免费注册</a></div>
@@ -103,7 +103,18 @@ export default {
     };
   },
   methods: {
-    reg() {
+    ax(){
+      axios.get('http://api.cat-shop.penkuoer.com//api/v1/users/info',{
+        headers:{
+          authorization:'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      .then(res=>{
+        console.log(res)
+      })
+    }
+    ,
+      reg() {
       this.$router.push({
         name: "reg"
       });

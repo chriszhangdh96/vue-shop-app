@@ -20,7 +20,7 @@ import Goods_list from '../views/Goods_list'
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
-
+import Pay from '../views/Pay'
 
 
 Vue.use(VueRouter)
@@ -34,14 +34,14 @@ const routes = [
     component: HelloWorld
   },
   {
-    path:'/home',
-    redirect:'/index',
-    name:'home',
-    component:Home,
+    path: '/home',
+    redirect: '/index',
+    name: 'home',
+    component: Home,
     children: [
       {
         path: '/index',
-        name:'index',
+        name: 'index',
         component: Index
       },
       {
@@ -75,59 +75,68 @@ const routes = [
     path: '/sousuo',
     name: 'sousuo',
     component: Sousuo
-  }, 
+  },
   {
     path: '/feedback',
     name: 'feedback',
     component: Feedback
   },
   {
-    path:'/sousuo',
-    name:'sousuo',
-    component:Sousuo,
-  
-     
+    path: '/sousuo',
+    name: 'sousuo',
+    component: Sousuo,
+
+
   },
   {
-    path:'/detail',
-    name:'detail',
-    component:Detail
+    path: '/detail',
+    name: 'detail',
+    component: Detail
   },
   //收藏页面
   {
-    path:'/collect',
-    name:'collect',
-    component:Collect,
-    children:[{
-      path:'/cang',
-      name:'cang',
-      component:Cang
-    },{
-      path:'/remai',
-      name:'remai',
-      component:remai
-    },{
-      path:'/jijiang',
-      name:'jijiang',
-      component:jijiang
+    path: '/collect',
+    name: 'collect',
+    component: Collect,
+    children: [{
+      path: '/cang',
+      name: 'cang',
+      component: Cang
+    }, {
+      path: '/remai',
+      name: 'remai',
+      component: remai
+    }, {
+      path: '/jijiang',
+      name: 'jijiang',
+      component: jijiang
     }]
   },
   {
-    path:'/productlist',
-    name:'productlist',
+    path: '/productlist',
+    name: 'productlist',
     component: ProductList
   },
   {
     path: '/order',
     name: 'order',
-    component:Order
+    component: Order
   },
-   {
-      path: '/goods_list',
-      name: 'goods_list',
-      component:Goods_list
-    },
-    
+  {
+    path: '/goods_list',
+    name: 'goods_list',
+    component: Goods_list
+  },
+  {
+    path: '/goods_list',
+    name: 'goods_list',
+    component: Goods_list
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    component: Pay
+  }
 ]
 
 // 创建路由对象
