@@ -73,7 +73,7 @@ export default {
             this.pagenum++
             axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
                 params:{
-                    // query:'',
+                    query:this.$route.query.key,
                     cid: this.$route.query.id,
                     pagenum:this.pagenum,
                     pagesize:6
@@ -97,9 +97,10 @@ export default {
         }
     },
     mounted(){
+        console.log(this.$route.query.key)
         axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
             params:{
-                query:'',
+                query:this.$route.query.key,
                 cid: this.$route.query.id,
                 pagenum:1,
                 pagesize:6

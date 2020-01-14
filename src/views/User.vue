@@ -95,12 +95,6 @@ export default {
       flag:'',
       mouseOver:'false',
       thespan:0,
-      listsc:[
-          {index:0,name:'收藏店铺'},
-          {index:1,name:'收藏的商品'},
-          {index:2,name:'关注的商品'},
-          {index:3,name:'我的足迹'},
-      ],
       show: false,  
       flag2:'',
       fileList: [
@@ -118,13 +112,6 @@ export default {
     }else{
             this.flag = false
     }
-    this.listsc.forEach(item=>{
-      this.thespan=1
-      //console.log(item)
-      if(item.index==1){
-        this.thespan=0
-      }
-    })
 
   },
   methods: {
@@ -149,7 +136,7 @@ export default {
         this.$router.push({
           name:'cang',
         })
-    }
+    
     },
     tofeedback(){
       this.$router.push({
@@ -167,6 +154,7 @@ export default {
         name:'order'
       })
     },
+  }
 };
 </script>
 
