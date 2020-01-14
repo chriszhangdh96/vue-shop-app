@@ -80,13 +80,16 @@ export default {
                 }
             }).then(res=>{
                 console.log(res.data.message)
-                this.list = res.data.message.goods          
+                if(res.data.message.goods.length==0){
+                    return false;
+                }  
+                this.list = res.data.message.goods
             })
 
             setTimeout(() => {
                 this.isLoading = false;
                 this.count++;
-            }, 1800); 
+            }, 2200); 
             
         },
         todetail(id){
