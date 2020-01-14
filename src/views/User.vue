@@ -40,7 +40,7 @@
         <span>我的订单</span>
       </div>
       <van-grid>
-        <van-grid-item icon="todo-list-o" text="全部订单" @click="orderHahdle" />
+        <van-grid-item icon="todo-list-o" text="全部订单" @click="orderHahdle()" />
         <van-grid-item icon="fire-o" text="代付款" />
         <van-grid-item icon="logistics" text="待收货" />
         <van-grid-item icon="after-sale" text="退款/售后" />
