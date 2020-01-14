@@ -9,7 +9,7 @@
             <!-- <img  src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg" alt="">       -->
         </div>
       
-        <div @click="alertHandle">
+        <div @click="alertHandle()">
             我是用户名
         </div>
         
@@ -30,7 +30,8 @@
             </li>
             <li>
                 <span>0</span>
-                <div class="sc">我的足迹</div>
+                <span></span>
+                <div class="sc">收藏的店铺</div>
             </li>
         </ul>
     </div>
@@ -58,7 +59,7 @@
           <span>联系客服</span>
           <span>400-168-4000</span>
         </li>
-        <li @click="tofeedback " :class="tofeedback?'changeMouseOver':''">
+        <li @click="tofeedback()">
           意见反馈
           <span>
             <van-icon name="arrow" />
@@ -95,12 +96,6 @@ export default {
       flag:'',
       mouseOver:'false',
       thespan:0,
-      listsc:[
-          {index:0,name:'收藏店铺'},
-          {index:1,name:'收藏的商品'},
-          {index:2,name:'关注的商品'},
-          {index:3,name:'我的足迹'},
-      ],
       show: false,  
       flag2:'',
       fileList: [
@@ -118,13 +113,7 @@ export default {
     }else{
             this.flag = false
     }
-    this.listsc.forEach(item=>{
-      this.thespan=1
-      //console.log(item)
-      if(item.index==1){
-        this.thespan=0
-      }
-    })
+    
 
   },
   methods: {
@@ -133,23 +122,15 @@ export default {
         name: "login"
       });
     },
-    changeMouseOver(){
-        //庆贺大佬的创作  refs  一定要记住
-        // this.$refs.clo.style = "color:#f00"
-        // this.active = 'color:#f00'
-        this.mouseOver =!this.mouseOver
-    },
+    
     mouseLeave(){
-        //console.log(2)
-        //庆贺大佬的创作  refs  一定要记住
-        // this.$refs.clo.style = "color:#f00"
         this.active = ''
     },
     tocollect(){
         this.$router.push({
           name:'cang',
         })
-    }
+    
     },
     tofeedback(){
       this.$router.push({
@@ -174,7 +155,7 @@ export default {
     }
     
     
-    
+  }
     
   }
 
