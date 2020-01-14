@@ -4,7 +4,10 @@
       title="结算"
       left-text="返回"
       left-arrow
+<<<<<<< HEAD
       fixed
+=======
+>>>>>>> hmy
       @click-left="onClickLeft"
     />
     <div class="goodsUser">
@@ -20,6 +23,7 @@
     <div class="goosProductes">
       <div>
         <van-card
+<<<<<<< HEAD
           :num="item.num"
           v-for="item in list" 
           :key="item.id"
@@ -27,15 +31,31 @@
           :title="item.title"
           :desc="item.desc"
           :thumb="item.thumb"
+=======
+          :num="item.count"
+          v-for="item in list"
+          :key="item.id"
+          :price="item.price"
+          :title="item.pname"
+          :thumb="item.pimg"
+>>>>>>> hmy
         />
       </div>
     </div>
     <div class="goodsSubmit">
+<<<<<<< HEAD
       <van-submit-bar :price="3050" button-text="支付" @submit="onSubmit" />
+=======
+      <span>合计</span>
+      <span>¥：{{ $store.getters.getgoodscountandmount.amout }}</span>
+      <van-button type="danger">支付</van-button>
+      <!-- <van-submit-bar  :price="$store.getters.getgoodscountandmount.amout" button-text="支付" @submit="onSubmit" /> -->
+>>>>>>> hmy
     </div>
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 export default {
   created(){
     let carts =localStorage.parse(localStorage.getItem('car')) 
@@ -57,6 +77,43 @@ export default {
   methods: {
     onClickLeft() {
       Toast("返回");
+=======
+import axios from "axios";
+export default {
+  created() {
+    let carts = JSON.parse(localStorage.getItem("topaylist"));
+    let token = localStorage.getItem("token");
+    console.log(carts);
+    axios
+      .get("http://api.cat-shop.penkuoer.com/api/v1/users/info", {
+        headers: {
+          authorization: "Bearer " + token
+        }
+      })
+      .then(res => {
+        console.log(res.data);
+        this.username = res.data.userName;
+      });
+    this.list = carts;
+
+    this.orderNumber =
+      parseInt(Math.random() * 1000) + "-" + parseInt(Math.random() * 100000);
+    /* this.price = carts.forEach(item =>{
+      let goodsPrice = item.count * item.price
+    }) */
+  },
+  data() {
+    return {
+      list: [],
+      username: "",
+      address: "四海为家，不用送了",
+      orderNumber: ""
+    };
+  },
+  methods: {
+    onClickLeft() {
+      history.go(-1);
+>>>>>>> hmy
     },
     onSubmit() {}
   }
@@ -75,7 +132,10 @@ export default {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid red;
+<<<<<<< HEAD
   margin-top:46px;
+=======
+>>>>>>> hmy
 }
 
 .goodsUser p {
@@ -88,11 +148,20 @@ export default {
   box-sizing: border-box;
   padding-right: 10px;
 }
+<<<<<<< HEAD
 .goosProductes{
   height:100%;
 }
 .goosProductes>div{
   overflow:auto;height:100%;
+=======
+.goosProductes {
+  height: 100%;
+}
+.goosProductes > div {
+  overflow: auto;
+  height: 100%;
+>>>>>>> hmy
 }
 .goodsCart {
   height: 50px;
@@ -126,4 +195,27 @@ export default {
 .van-card__num {
   font-size: 20px;
 }
+<<<<<<< HEAD
+=======
+.van-card__price {
+  float: left;
+}
+.goodsSubmit {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: right;
+  background: #eee;
+}
+.goodsSubmit > div {
+  width: 100px;
+}
+.goodsSubmit span:nth-child(1) {
+  font-size: 18px;
+}
+.goodsSubmit span:nth-child(2) {
+  color: red;
+  padding: 0 10px 0 10px;
+}
+>>>>>>> hmy
 </style>

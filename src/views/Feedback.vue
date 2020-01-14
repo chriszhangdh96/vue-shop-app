@@ -73,9 +73,7 @@ export default {
   mounted() {},
   methods: {
     onClickLeft() {
-      this.$router.push({
-        name: "user"
-      });
+     history.go(-1)
     },
     sub(){
       axios.get('https://images.ac.cn/Home/Index/UploadAction/',{
