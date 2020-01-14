@@ -16,9 +16,21 @@
     </div>
     <div class="u-top">
         <ul>
-            <li v-for="(item,index) in listsc" :key="item.index">
-                <span>1</span>
-                <div class="sc" @click="tocollect(index)">{{item.name}}</div>
+            <li>
+                <span>0</span>
+                <div class="sc">收藏店铺</div>
+            </li>
+            <li>
+                <span>{{$store.getters.getshoplistlength}}</span>
+                <div class="sc" @click="tocollect">收藏商品</div>
+            </li>
+            <li>
+                <span>0</span>
+                <div class="sc">关注的商品</div>
+            </li>
+            <li>
+                <span>0</span>
+                <div class="sc">我的足迹</div>
             </li>
         </ul>
     </div>
@@ -82,6 +94,7 @@ export default {
       active: 0,
       flag:'',
       mouseOver:'false',
+      thespan:0,
       listsc:[
           {index:0,name:'收藏店铺'},
           {index:1,name:'收藏的商品'},
@@ -105,6 +118,14 @@ export default {
     }else{
             this.flag = false
     }
+    this.listsc.forEach(item=>{
+      this.thespan=1
+      //console.log(item)
+      if(item.index==1){
+        this.thespan=0
+      }
+    })
+
   },
   methods: {
     login() {
@@ -119,17 +140,16 @@ export default {
         this.mouseOver =!this.mouseOver
     },
     mouseLeave(){
-        console.log(2)
+        //console.log(2)
         //庆贺大佬的创作  refs  一定要记住
         // this.$refs.clo.style = "color:#f00"
         this.active = ''
     },
-    tocollect(index){
-      if(index==1){
+    tocollect(){
         this.$router.push({
-          name:'cang'
+          name:'cang',
         })
-      }
+    }
     },
     tofeedback(){
       this.$router.push({
@@ -141,18 +161,12 @@ export default {
         // console.log(1)
         localStorage.removeItem('token')
       }
-      
     },
     orderHahdle(){
       this.$router.push({
         name:'order'
       })
     },
-    
-    
-    
-    
-  }
 };
 </script>
 

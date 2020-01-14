@@ -1,5 +1,6 @@
 <template>
     <div class="cang">
+        
         <van-card
             v-for="(item,index) in shopList"
             :key="item.id"

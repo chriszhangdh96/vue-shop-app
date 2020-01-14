@@ -1,13 +1,5 @@
 <template>
     <div>
-        <!-- 购物车 -->
-        <h2>Cart</h2>
-        <!-- <input type="checkbox" v-model="checked"/>
-        <div v-for="item in list" :key="item.id">
-            <input type="checkbox" v-model="checked"/>
-            <img :src="item.product.coverImg | glq"/>
-            <div>{{item.product.name}}</div>
-        </div> -->
         <div class="list" v-show="flag" v-for="(item,index) in carlist" :key="item.id">
             <!-- <van-switch v-model="item.selected" class="switch" size="14px"/> -->
             <van-checkbox
@@ -45,7 +37,12 @@
         <div class="jiesusan" v-show="flag">
             <van-checkbox v-model="checked" class="xuan" @click="quan">全选</van-checkbox>
             <div class="jia">总价：{{$store.getters.getgoodscountandmount.amout}}</div>
-            <van-button type="danger" class="btn" @click="pay">去结算({{$store.getters.getgoodscountandmount.count}})</van-button>
+            <van-button
+            type="danger"
+            class="btn"
+            @click="toshopping">
+            去结算({{$store.getters.getgoodscountandmount.count}})
+            </van-button>
         </div>
     </div>
 </template>
@@ -144,6 +141,20 @@ export default {
                 name:'detail',
                 query:{
                     id:id
+                }
+            })
+        },
+        toshopping(){
+            localStorage.setItem('topaylist','[]')
+            let topaylist=JSON.parse(localStorage.getItem('topaylist'))
+            this.carlist.forEach(item=>{
+                //console.log(item)
+                if(item.selected==true){
+                        //console.log(topaylist)
+                        //console.log(item)
+                        topaylist.push(item)
+                        localStorage.setItem('topaylist',JSON.stringify(topaylist))
+                        //console.log(topaylist)
                 }
             })
         }
