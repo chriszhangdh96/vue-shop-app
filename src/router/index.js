@@ -42,7 +42,6 @@ const routes = [
       {
         path: '/index',
         name:'index',
-        name:'home',
         component: Index
       },
       {

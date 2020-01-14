@@ -86,6 +86,10 @@ var mutations = {
             }
         })
         localStorage.setItem('shop',JSON.stringify(state.shop))
+    },
+    //去结算
+    toshoping(state){
+        state.car.forEach()
     }
 }
 
