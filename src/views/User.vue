@@ -58,8 +58,8 @@
             <van-icon name="arrow" />
           </span>
         </li>
-        <li>
-          把应用推荐给别人
+        <li @click="topeopleChange()">
+          设置
           <span>
             <van-icon name="arrow" />
           </span>
@@ -148,6 +148,11 @@ export default {
         name:'order'
       })
     },
+    topeopleChange(){
+      this.$router.push({
+        name:'people_change'
+      })
+    }
     
     
     
