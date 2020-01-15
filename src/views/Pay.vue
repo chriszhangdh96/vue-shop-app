@@ -50,7 +50,7 @@ export default {
         }
       })
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         this.username = res.data.userName;
       });
     this.list = carts;
