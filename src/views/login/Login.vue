@@ -4,7 +4,7 @@
       <span @click="Index()">
         <van-icon name="arrow-left" />
       </span>
-      
+
       <span>登录</span>
     </div>
     <div class="log-log">
@@ -29,7 +29,7 @@
           <div><van-icon name="desktop-o" /></div>
           <input
             v-bind:type="type"
-            placeholder="请输入密码"
+            placeholder="请输入6-12位数字密码"
             @input="passwrite()"
             v-model="password"
           />
@@ -68,7 +68,11 @@
             v-model="checked"
             shape="square"
           ></van-checkbox>
-          <p>同意并遵守<a>&nbsp;《服务条款》</a> 和&nbsp;<a @click="ax">《隐私条例》</a></p>
+          <p>
+            同意并遵守<a>&nbsp;《服务条款》</a> 和&nbsp;<a @click="ax"
+              >《隐私条例》</a
+            >
+          </p>
         </div>
         <div @click="reg()" class="log-ve">忘记密码？</div>
         <div class="log-ac">还没有账号？<a @click="reg()">免费注册</a></div>
@@ -79,6 +83,7 @@
 
 <script>
 import axios from "axios";
+import { Dialog } from "vant";
 export default {
   data() {
     return {
@@ -103,28 +108,27 @@ export default {
     };
   },
   methods: {
-    ax(){
-      axios.get('http://api.cat-shop.penkuoer.com//api/v1/users/info',{
-        headers:{
-          authorization:'Bearer ' + localStorage.getItem('token')
-        }
-      })
-      .then(res=>{
-        console.log(res)
-      })
-    }
-    ,
-      reg() {
+    ax() {
+      axios
+        .get("http://api.cat-shop.penkuoer.com//api/v1/users/info", {
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("token")
+          }
+        })
+        .then(res => {
+          console.log(res);
+        });
+    },
+    reg() {
       this.$router.push({
         name: "reg"
       });
     },
-    Index(){
+    Index() {
       this.$router.push({
         name: "index"
       });
-    }
-    ,
+    },
     userwrite() {
       if (this.username == "") {
         this.isuserflag = false;
@@ -154,55 +158,24 @@ export default {
     ver() {
       if (
         /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
-        /^[0-9]{6}$/.test(this.password)
+        /^[0-9]{6,12}$/.test(this.password)
       ) {
         this.verflag = true;
         this.verify = "验证完成";
         this.styleVer.color = "green";
         this.styleVer.background = "#eee";
       } else {
-        if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
-        } else {
-          this.styleErr.display = "block";
-          this.errCount = "请输入正确账号";
-          if (/^[0-9]{6}$/.test(this.password)) {
-        } else {
-          this.styleErr.display = "block";
-          this.errCount = "请输入正确密码";
-        }
-        }
-        
+        this.styleErr.display = "block";
+        this.errCount = "请确认账号与密码正确之后，再进行验证";
       }
     },
-    cluser() {
-      this.username = "";
-      this.isuserflag = !this.isuserflag;
-    },
-    clpass() {
-      this.password = "";
-      this.ispassflag = !this.ispassflag;
-    },
-    /* userblur(){
-
-    },
-    userfocus(){
-
-    }
-    , */
-    logBtn() {
-      if (this.username == "") {
-        this.styleErr.display = "block";
-        this.errCount = "请输入账号";
-      } else {
-        if (this.password == "") {
-          this.styleErr.display = "block";
-          this.errCount = "密码由6位数字组成，没有英文，无需区分大小写";
-        } else {
-          // 勾選
-          if (!this.verflag) {
+    logBtn(){
+      if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+          /^[0-9]{6,12}$/.test(this.password)) {
+       if (!this.verflag) {
             this.styleErr.display = "block";
             this.errCount = "请点击验证";
-          } else {
+          }else {
             if (!this.checked) {
               this.styleErr.display = "block";
               this.errCount = "请勾选服务条例";
@@ -217,30 +190,74 @@ export default {
                   data
                 )
                 .then(res => {
-                  console.log(res);
                   localStorage.setItem("token", res.data.token);
                   if (res.data.code == "success") {
-                    console.log(res)
+                     Dialog.alert({
+                    message: "登录成功"
+                  }).then(() => {
+                    // on close
                     this.$router.push({
-                      name: "home"
+                      name: "index"
                     });
+                  });
                   } else {
-                    this.styleErr.display = "block";
+                    Dialog.alert({
+                    message: res.data.message
+                  }).then(() => {
+                    
+                  });
                   }
                 });
             }
           }
+      }else{
+        if (
+          /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) ||
+          /^[0-9]{6,12}$/.test(this.password)
+        ) {
+          
+          if (
+            /^[0-9]{6,12}$/.test(this.password) &&
+            !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)
+          ) {
+            this.styleErr.display = "block";
+            this.errCount = "请输入正确账号";
+            this.$refs.myuser.style = "border-color:red";
+          }
+          if (
+            /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+            !/^[0-9]{6,12}$/.test(this.password)
+          ) {
+            this.styleErr.display = "block";
+            this.errCount = "请输入正确密码";
+            this.$refs.mypass.style = "border-color:red";
+          } else {
+          }
+        } else {
+          this.styleErr.display = "block";
+          this.errCount = "请输入正确账号和密码";
+           this.$refs.myuser.style = "border-color:red";
+           this.$refs.mypass.style = "border-color:red";
         }
       }
-      //
     }
-  }
+    ,
+    cluser() {
+      this.username = "";
+      this.isuserflag = !this.isuserflag;
+    },
+    clpass() {
+      this.password = "";
+      this.ispassflag = !this.ispassflag;
+    },
+    }
 };
 </script>
 
 <style scoped>
-html,body{
-  height:100%
+html,
+body {
+  height: 100%;
 }
 .log-top {
   height: 44px;
@@ -251,11 +268,11 @@ html,body{
   margin-bottom: 12px;
   position: relative;
 }
-.log-top span:nth-child(1){
+.log-top span:nth-child(1) {
   position: absolute;
-  left:40px;
-  font-size:18px;
-} 
+  left: 40px;
+  font-size: 18px;
+}
 form {
   width: 365px;
   height: 425px;

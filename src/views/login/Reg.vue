@@ -13,17 +13,16 @@
                 class="reg-text"
                 type="text"
                 v-model="username"
-                placeholder="请输入邮箱地址" 
-                  @input="username1" @blur="username2" @focus="username3"
+                placeholder="请输入邮箱地址"
+                @input="username1"
+                @blur="username2"
+                @focus="username3"
               />
             </div>
             <!-- 后缀 -->
             <div class="reg-sel" @click="opflag()">
-              <input type="text" v-model="value"/>
-              <div
-                class="reg-op"
-                v-show="isflag"
-              >
+              <input type="text" v-model="value" />
+              <div class="reg-op" v-show="isflag">
                 <div
                   v-for="item in option"
                   :key="item.value"
@@ -44,8 +43,10 @@
               class="reg-word"
               type="password"
               v-model="password"
-              placeholder="请输入位6密码" 
-              @input="password1" @blur="password2" @focus="password3"
+              placeholder="请输入位6-12位数字密码"
+              @input="password1"
+              @blur="password2"
+              @focus="password3"
             />
           </div>
           <div class="reg-word-err">{{ passcount }}</div>
@@ -68,7 +69,7 @@
 </template>
 <script>
 import axios from "axios";
-
+import { Dialog } from "vant";
 export default {
   data() {
     return {
@@ -86,7 +87,9 @@ export default {
       ]
     };
   },
-
+  components: {
+    [Dialog.Component.name]: Dialog.Component
+  },
   methods: {
     onConfirm() {
       this.$refs.item.toggle();
@@ -97,87 +100,126 @@ export default {
     regOp(val) {
       this.value = val;
     },
-    username1(){
-      if (this.username == "") {
-        this.usercount = '请输入正确账号'
-      }else{
-          this.$refs.myuser.style = 'border-color:#ccc'
-        this.usercount = ''
-      }
-    } 
-    ,
-    username2(){
-      this.$refs.myuser.style = 'border-color:#ccc'
-      if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
-        
-      }else{
-        this.usercount = '请输入正确账号'
-        this.$refs.myuser.style = 'border-color:red'
-      }
-    },
-    username3(){
-      this.$refs.myuser.style = 'border-color:yellow'
-      if (this.usercount='请输入正确账号') {
-        this.usercount = ''
-      }
-    }
-    ,
-    password1(){
-       if (this.password == "") {
-        this.passcount = '请输入正确密码'
-      }else{
-          this.$refs.mypass.style = 'border-color:#ccc'
-        this.passcount = ''
-      }
-    },
-    password2(){
-      this.$refs.mypass.style = 'border-color:#ccc'
-      if (/^[0-9]{6}$/.test(this.password)) {
-        
-      }else{
-        this.passcount = '请输入正确密码'
-        this.$refs.mypass.style = 'border-color:red'
-      }
-    },
-    password3(){
-      this.$refs.mypass.style = 'border-color:yellow'
-      if (this.passcount='请输入正确密码') {
-        this.passcount = ''
-      }
-    }
-    ,
-    loginBtn() {
+    username1() {
       if (this.username == "") {
         this.usercount = "请输入正确账号";
-        this.$refs.myuser.style="border-color:red"
       } else {
-        this.usercount = ""
-        if (this.password == "") {
-          this.passcount = "密码由6位数字组成，没有英文，无需区分大小写";
-          this.$refs.mypass.style="border-color:red"
-        } else {
-          this.passcount = ""
-          let data = {
-            'userName': this.username,
-            'password': this.password,
-            avatar:
-              "http://pic.sogou.com/pics/recommend?category=%E6%90%9E%E7%AC%91&imageid=490864#%E6%90%9E%E7%AC%91%E4%BA%BA%E7%89%A9",
-            nickName: '搞笑来了'
-          };
-          axios
-            .post("http://api.cat-shop.penkuoer.com/api/v1/auth/reg", data)
-            .then(res => {
-              // console.log(res);
-              if (res.data.code == "success") {
+        this.$refs.myuser.style = "border-color:#ccc";
+        this.usercount = "";
+      }
+    },
+    username2() {
+      this.$refs.myuser.style = "border-color:#ccc";
+      if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
+      } else {
+        this.usercount = "请输入正确账号";
+        this.$refs.myuser.style = "border-color:red";
+      }
+    },
+    username3() {
+      this.$refs.myuser.style = "border-color:yellow";
+      if ((this.usercount = "请输入正确账号")) {
+        this.usercount = "";
+        this.$refs.mypass.style = "border-color:#ccc";
+        this.passcount = "";
+      }
+    },
+    password1() {
+      if (this.password == "") {
+        this.passcount = "请输入正确密码";
+      } else {
+        this.$refs.mypass.style = "border-color:#ccc";
+        this.passcount = "";
+      }
+    },
+    password2() {
+      this.$refs.mypass.style = "border-color:#ccc";
+      if (/^[0-9]{6,12}$/.test(this.password)) {
+      } else {
+        this.passcount = "请输入正确密码";
+        this.$refs.mypass.style = "border-color:red";
+      }
+    },
+    password3() {
+      this.$refs.mypass.style = "border-color:yellow";
+      if ((this.passcount = "请输入正确密码")) {
+        this.passcount = "";
+        this.$refs.myuser.style = "border-color:#ccc";
+        this.usercount = "";
+      }
+    },
+    loginBtn() {
+      if (
+        /^[0-9]{6,12}$/.test(this.password) &&
+        /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)
+      ) {
+        let data = {
+          userName: this.username,
+          password: this.password,
+          avatar:
+            "http://pic.sogou.com/pics/recommend?category=%E6%90%9E%E7%AC%91&imageid=490864#%E6%90%9E%E7%AC%91%E4%BA%BA%E7%89%A9",
+          nickName: "搞笑来了"
+        };
+        axios
+          .post("http://api.cat-shop.penkuoer.com/api/v1/auth/reg", data)
+          .then(res => {
+            // console.log(res);
+            if (res.data.code == "success") {
+              Dialog.alert({
+                message: "注册成功"
+              }).then(() => {
+                // on close
                 this.$router.push({
                   name: "login"
                 });
-              } else {
-                console.log(res.data.message);
-              }
-            });
+              });
+            } else {
+              Dialog.alert({
+                message: res.data.message
+              }).then(() => {});
+            }
+          });
+      } else {
+        if (
+          /^[0-9]{6,12}$/.test(this.password) ||
+          /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)
+        ) {
+          if (
+            /^[0-9]{6,12}$/.test(this.password) &&
+            !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)
+          ) {
+            this.usercount = "请输入正确账号";
+            this.$refs.myuser.style = "border-color:red";
+          }
+          if (
+            /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+            !/^[0-9]{6,12}$/.test(this.password)
+          ) {
+            this.passcount = "请输入正确密码";
+            this.$refs.mypass.style = "border-color:red";
+          }
+        } else {
+          this.$refs.myuser.style = "border-color:red";
+          this.$refs.mypass.style = "border-color:red";
+          this.usercount = "请输入正确账号";
+          this.passcount = "请输入正确密码";
         }
       }
+
+      /* if (this.username == "" || this.password == "") {
+        this.usercount = "请输入正确账号";
+        this.$refs.myuser.style = "border-color:red";
+        this.passcount = "密码由6-12位数字组成，没有英文";
+          this.$refs.mypass.style = "border-color:red";
+      } else {
+
+        if (this.password == "") {
+          this.passcount = "密码由6-12位数字组成，没有英文";
+          this.$refs.mypass.style = "border-color:red";
+        } else {
+          
+        }
+      } */
     },
     login() {
       this.$router.push({
@@ -189,8 +231,9 @@ export default {
 </script>
 
 <style scoped>
-html,body{
-  height:100%
+html,
+body {
+  height: 100%;
 }
 .reg {
   display: flex;
@@ -306,5 +349,9 @@ form {
 }
 .reg-p strong {
   color: #2c82ff;
+}
+.reg-text-err,.reg-word-err{
+  font-size:12px;
+  line-height: 24px;
 }
 </style>
