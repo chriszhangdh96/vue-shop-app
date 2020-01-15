@@ -2,7 +2,7 @@
   <div class="login">
     <div class="log-top">
       <span @click="Index()">
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" @click-left="onClickLeft"/>
       </span>
 
       <span>登录</span>
@@ -137,6 +137,9 @@ export default {
           this.isuserflag = true;
         }
       }
+    },
+    onClickLeft() {
+      this.$router.go(-1);
     },
     passwrite() {
       if (this.password == "") {
