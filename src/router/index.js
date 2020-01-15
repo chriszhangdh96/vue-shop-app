@@ -55,16 +55,15 @@ const routes = [{
       {
         path: '/cart',
         name: 'cart',
-        component: Cart
+        component: Cart,
+        meta: {
+          needLogin: true
+        },
       },
       {
         path: '/user',
         name: 'user',
-        component: User,
-        meta: {
-          needLogin: true
-        },
-        
+        component: User,   
       },
     ]
   },
@@ -127,7 +126,10 @@ const routes = [{
   {
     path: '/order',
     name: 'order',
-    component: Order
+    component: Order,
+    meta: {
+      needLogin: true
+    },
   },
   {
     path: '/goods_list',
