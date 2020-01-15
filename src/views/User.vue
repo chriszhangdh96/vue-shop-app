@@ -4,36 +4,34 @@
 
     <h3 @click="login()" v-show="!flag">登录</h3>
     <div class="u-login" v-show="flag">
-       <div class="box2">
-        <div> <van-uploader v-model="fileList" multiple  :max-count="1" class="headpic"/></div>
-            <!-- <img  src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg" alt="">       -->
+      <div>
+        <div class="box2">
+          <van-uploader v-model="fileList" multiple :max-count="1" class="headpic" />
         </div>
-      
-        <div @click="alertHandle()">
-            我是用户名
-        </div>
-        
+      </div>
+
+      <div @click="alertHandle()">我是用户名</div>
     </div>
     <div class="u-top">
-        <ul>
-            <li>
-                <span>0</span>
-                <div class="sc">收藏店铺</div>
-            </li>
-            <li>
-                <span>{{$store.getters.getshoplistlength}}</span>
-                <div class="sc" @click="tocollect">收藏商品</div>
-            </li>
-            <li>
-                <span>0</span>
-                <div class="sc">关注的商品</div>
-            </li>
-            <li>
-                <span>0</span>
-                <span></span>
-                <div class="sc">收藏的店铺</div>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <span>0</span>
+          <div class="sc">收藏店铺</div>
+        </li>
+        <li>
+          <span>{{$store.getters.getshoplistlength}}</span>
+          <div class="sc" @click="tocollect">收藏商品</div>
+        </li>
+        <li>
+          <span>0</span>
+          <div class="sc">关注的商品</div>
+        </li>
+        <li>
+          <span>0</span>
+          <span></span>
+          <div class="sc">收藏的店铺</div>
+        </li>
+      </ul>
     </div>
 
     <div class="tab">
@@ -84,8 +82,8 @@
 
 
 <script>
-import Axios from 'axios';
-import  ImagePreview  from 'vant';
+import Axios from "axios";
+import ImagePreview from "vant";
 
 export default {
   name: "User",
@@ -93,28 +91,28 @@ export default {
     return {
       title: "我的",
       active: 0,
-      flag:'',
-      mouseOver:'false',
-      thespan:0,
-      show: false,  
-      flag2:'',
+      flag: "",
+      mouseOver: "false",
+      thespan: 0,
+      show: false,
+      flag2: "",
       fileList: [
-        { url: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg' },
+        {
+          url:
+            "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg"
+        }
         // Uploader 根据文件后缀来判断是否为图片文件
         // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      
       ]
     };
   },
   mounted() {
     this.$emit("toparent", this.title);
-    if(localStorage.getItem('token')){
-            this.flag = true
-    }else{
-            this.flag = false
+    if (localStorage.getItem("token")) {
+      this.flag = true;
+    } else {
+      this.flag = false;
     }
-    
-
   },
   methods: {
     login() {
@@ -122,43 +120,38 @@ export default {
         name: "login"
       });
     },
-    
-    mouseLeave(){
-        this.active = ''
+
+    mouseLeave() {
+      this.active = "";
     },
-    tocollect(){
-        this.$router.push({
-          name:'cang',
-        })
-    
-    },
-    tofeedback(){
+    tocollect() {
       this.$router.push({
-        name:'feedback'
-      })
+        name: "cang"
+      });
     },
-    alertHandle(){
-      if(confirm('你想要退出登录吗？')){
+    tofeedback() {
+      this.$router.push({
+        name: "feedback"
+      });
+    },
+    alertHandle() {
+      if (confirm("你想要退出登录吗？")) {
         // console.log(1)
-        localStorage.removeItem('token')
+        localStorage.removeItem("token");
       }
     },
-    orderHahdle(){
+    orderHahdle() {
       this.$router.push({
-        name:'order'
-      })
+        name: "order"
+      });
     },
-    topeopleChange(){
+    topeopleChange() {
       this.$router.push({
-        name:'people_change'
-      })
+        name: "people_change"
+      });
     }
-    
-    
   }
-    
-  }
-
+};
 </script>
 
 <style scoped>
@@ -206,19 +199,28 @@ export default {
 .list li:nth-child(5) {
   margin-top: 12px;
 }
-.u-top ul{
-   border-bottom:1px solid #aaa;display: flex;justify-content: space-around;height: 70px;
-   align-items: center;
+.u-top ul {
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  justify-content: space-around;
+  height: 70px;
+  align-items: center;
 }
-.u-top span{color: crimson}
-.u-login{
-    height: 80px;display: flex;justify-content: center;flex-direction: column
+.u-top span {
+  color: crimson;
 }
-.box2{display: flex;justify-content: center}
-.active{background-color: darkgray}
-.headpic{width: 50px;height: 50px;border-radius:50%;overflow: hidden;}
-
-
-
+.u-login {
+  height: 80px;
+margin: 0 auto
+}
+.box2 {
+   width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.active {
+  background-color: darkgray;
+}
 
 </style>

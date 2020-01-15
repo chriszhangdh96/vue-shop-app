@@ -18,6 +18,12 @@
             <van-icon name="arrow" />
           </span>
         </li>
+        <!-- <li @click="changeName">
+          更改名称
+          <span>
+            <van-icon name="arrow" />
+          </span>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -48,7 +54,8 @@ export default {
 
         })     
         
-    }
+    },
+    
   },
   data() {
     return {
