@@ -90,7 +90,7 @@ export default {
             this.$store.commit('updatagoodsinfo',{
                 id:id,
                 count:this.$refs.mycount[index].currentValue
-                })
+            })
         },
         remove(id,index){
             //点击删除，ID从本地删除，index从购物车删除

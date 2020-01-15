@@ -73,20 +73,23 @@ export default {
             this.pagenum++
             axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
                 params:{
-                    // query:'',
+                    query:this.$route.query.key,
                     cid: this.$route.query.id,
                     pagenum:this.pagenum,
                     pagesize:6
                 }
             }).then(res=>{
                 console.log(res.data.message)
-                this.list = res.data.message.goods          
+                if(res.data.message.goods.length==0){
+                    return false;
+                }  
+                this.list = res.data.message.goods
             })
 
             setTimeout(() => {
                 this.isLoading = false;
                 this.count++;
-            }, 1800); 
+            }, 2200); 
             
         },
         todetail(id){
@@ -94,9 +97,10 @@ export default {
         }
     },
     mounted(){
+        console.log(this.$route.query.key)
         axios.get('https://api.zbztb.cn/api/public/v1/goods/search',{
             params:{
-                query:'',
+                query:this.$route.query.key,
                 cid: this.$route.query.id,
                 pagenum:1,
                 pagesize:6

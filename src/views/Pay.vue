@@ -4,10 +4,6 @@
       title="结算"
       left-text="返回"
       left-arrow
-<<<<<<< HEAD
-      fixed
-=======
->>>>>>> hmy
       @click-left="onClickLeft"
     />
     <div class="goodsUser">
@@ -23,61 +19,24 @@
     <div class="goosProductes">
       <div>
         <van-card
-<<<<<<< HEAD
-          :num="item.num"
-          v-for="item in list" 
-          :key="item.id"
-          :price="item.price"
-          :title="item.title"
-          :desc="item.desc"
-          :thumb="item.thumb"
-=======
           :num="item.count"
           v-for="item in list"
           :key="item.id"
           :price="item.price"
           :title="item.pname"
           :thumb="item.pimg"
->>>>>>> hmy
         />
       </div>
     </div>
     <div class="goodsSubmit">
-<<<<<<< HEAD
-      <van-submit-bar :price="3050" button-text="支付" @submit="onSubmit" />
-=======
       <span>合计</span>
       <span>¥：{{ $store.getters.getgoodscountandmount.amout }}</span>
       <van-button type="danger">支付</van-button>
       <!-- <van-submit-bar  :price="$store.getters.getgoodscountandmount.amout" button-text="支付" @submit="onSubmit" /> -->
->>>>>>> hmy
     </div>
   </div>
 </template>
 <script>
-<<<<<<< HEAD
-export default {
-  created(){
-    let carts =localStorage.parse(localStorage.getItem('car')) 
-    let token = localStorage.getItem('token')
-    console.log(carts,token)
-  }
-  ,
-  data() {
-    return {
-      list: [
-       
-      ],
-      username: "张三",
-      address: "四海为家，不用送了",
-      orderNumber: "100-1000"
-    };
-  },
-
-  methods: {
-    onClickLeft() {
-      Toast("返回");
-=======
 import axios from "axios";
 export default {
   created() {
@@ -113,7 +72,6 @@ export default {
   methods: {
     onClickLeft() {
       history.go(-1);
->>>>>>> hmy
     },
     onSubmit() {}
   }
@@ -132,10 +90,6 @@ export default {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid red;
-<<<<<<< HEAD
-  margin-top:46px;
-=======
->>>>>>> hmy
 }
 
 .goodsUser p {
@@ -148,20 +102,12 @@ export default {
   box-sizing: border-box;
   padding-right: 10px;
 }
-<<<<<<< HEAD
-.goosProductes{
-  height:100%;
-}
-.goosProductes>div{
-  overflow:auto;height:100%;
-=======
 .goosProductes {
   height: 100%;
 }
 .goosProductes > div {
   overflow: auto;
   height: 100%;
->>>>>>> hmy
 }
 .goodsCart {
   height: 50px;
@@ -195,8 +141,6 @@ export default {
 .van-card__num {
   font-size: 20px;
 }
-<<<<<<< HEAD
-=======
 .van-card__price {
   float: left;
 }
@@ -217,5 +161,4 @@ export default {
   color: red;
   padding: 0 10px 0 10px;
 }
->>>>>>> hmy
 </style>
