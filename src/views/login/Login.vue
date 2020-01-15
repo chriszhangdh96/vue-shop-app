@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="log-top">
-      <span @click="Index()">
-        <van-icon name="arrow-left" @click-left="onClickLeft"/>
+      <span>
+        <van-icon @click-left="onClickLeft" name="arrow-left"/>
       </span>
 
       <span>登录</span>
@@ -108,6 +108,12 @@ export default {
     };
   },
   methods: {
+    onClickLeft(){
+      this.$router.push({
+        name:'index'
+      })
+    }
+    ,
     ax() {
       axios
         .get("http://api.cat-shop.penkuoer.com//api/v1/users/info", {
