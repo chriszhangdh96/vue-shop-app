@@ -43,7 +43,6 @@ const routes = [{
     children: [{
         path: '/index',
         name: 'index',
-        name: 'home',
         component: Index
       },
       {
@@ -172,5 +171,5 @@ function isLogin() {
   } else {
     return false
   }
-}
+} 
 export default router

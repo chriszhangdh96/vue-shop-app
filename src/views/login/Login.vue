@@ -58,7 +58,7 @@
           <div :style="styleErr">{{ errCount }}</div>
         </div>
         <!-- 登录 -->
-        <div class="log-btn" @click="logBtn()">
+        <div class="log-btn" @click.prevent="logBtn()">
           <van-button type="info" block>登录</van-button>
         </div>
         <div class="log-p">
@@ -193,20 +193,13 @@ export default {
               .then(res => {
                 console.log(res);
                 localStorage.setItem("token", res.data.token);
-                if (res.data.code == "success") {
-                  Dialog.alert({
-                    message: "登录成功"
-                  }).then(() => {
-                    // on close
-                    this.$router.push({
-                      name:"index"
-                    });
+                Dialog.alert({
+                  message: "登录成功"
+                }).then(() => {
+                  this.$router.push({
+                    name: "index"
                   });
-                } else {
-                  Dialog.alert({
-                    message: res.data.message
-                  }).then(() => {});
-                }
+                });
               });
           }
         }

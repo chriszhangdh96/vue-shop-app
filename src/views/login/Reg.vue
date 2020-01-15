@@ -157,7 +157,7 @@ export default {
           userName: this.username,
           password: this.password,
           avatar:
-            "http://pic.sogou.com/pics/recommend?category=%E6%90%9E%E7%AC%91&imageid=490864#%E6%90%9E%E7%AC%91%E4%BA%BA%E7%89%A9",
+            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1418777758,1126951395&fm=26&gp=0.jpg",
           nickName: "搞笑来了"
         };
         axios
@@ -207,9 +207,7 @@ export default {
       }
     },
     login() {
-      this.$router.push({
-        name: "login"
-      });
+      history.go(-1)
     }
   }
 };
