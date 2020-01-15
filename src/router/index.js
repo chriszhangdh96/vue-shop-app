@@ -23,7 +23,7 @@ import Goods_list from '../views/Goods_list'
 import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
-
+import Pay from '../views/Pay'
 
 
 Vue.use(VueRouter)
@@ -139,6 +139,11 @@ const routes = [{
     name: 'people_change',
     component: People_change
   },
+  {
+    path:'/pay',
+    name:'pay',
+    component:Pay
+  }
 
 ]
 

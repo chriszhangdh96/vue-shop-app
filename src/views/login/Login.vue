@@ -1,10 +1,9 @@
 <template>
   <div class="login">
     <div class="log-top">
-      <span>
-        <van-icon @click-left="onClickLeft" name="arrow-left"/>
+      <span @click="Index()">
+        <van-icon name="arrow-left" />
       </span>
-
       <span>登录</span>
     </div>
     <div class="log-log">
@@ -108,12 +107,11 @@ export default {
     };
   },
   methods: {
-    onClickLeft(){
+    Index() {
       this.$router.push({
-        name:'index'
-      })
-    }
-    ,
+        name: "index"
+      });
+    },
     ax() {
       axios
         .get("http://api.cat-shop.penkuoer.com//api/v1/users/info", {
@@ -128,11 +126,6 @@ export default {
     reg() {
       this.$router.push({
         name: "reg"
-      });
-    },
-    Index() {
-      this.$router.push({
-        name: "index"
       });
     },
     userwrite() {
@@ -178,53 +171,50 @@ export default {
         this.errCount = "请确认账号与密码正确之后，再进行验证";
       }
     },
-    logBtn(){
-      if (/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
-          /^[0-9]{6,12}$/.test(this.password)) {
-       if (!this.verflag) {
+    logBtn() {
+      if (
+        /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) &&
+        /^[0-9]{6,12}$/.test(this.password)
+      ) {
+        if (!this.verflag) {
+          this.styleErr.display = "block";
+          this.errCount = "请点击验证";
+        } else {
+          if (!this.checked) {
             this.styleErr.display = "block";
-            this.errCount = "请点击验证";
-          }else {
-            if (!this.checked) {
-              this.styleErr.display = "block";
-              this.errCount = "请勾选服务条例";
-            } else {
-              let data = {
-                userName: this.username,
-                password: this.password
-              };
-              axios
-                .post(
-                  "http://api.cat-shop.penkuoer.com/api/v1/auth/login",
-                  data
-                )
-                .then(res => {
-                  localStorage.setItem("token", res.data.token);
-                  if (res.data.code == "success") {
-                     Dialog.alert({
+            this.errCount = "请勾选服务条例";
+          } else {
+            let data = {
+              userName: this.username,
+              password: this.password
+            };
+            axios
+              .post("http://api.cat-shop.penkuoer.com/api/v1/auth/login", data)
+              .then(res => {
+                console.log(res);
+                localStorage.setItem("token", res.data.token);
+                if (res.data.code == "success") {
+                  Dialog.alert({
                     message: "登录成功"
                   }).then(() => {
                     // on close
                     this.$router.push({
-                      name: "index"
+                      name:"index"
                     });
                   });
-                  } else {
-                    Dialog.alert({
+                } else {
+                  Dialog.alert({
                     message: res.data.message
-                  }).then(() => {
-                    
-                  });
-                  }
-                });
-            }
+                  }).then(() => {});
+                }
+              });
           }
-      }else{
+        }
+      } else {
         if (
           /^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) ||
           /^[0-9]{6,12}$/.test(this.password)
         ) {
-          
           if (
             /^[0-9]{6,12}$/.test(this.password) &&
             !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)
@@ -245,12 +235,11 @@ export default {
         } else {
           this.styleErr.display = "block";
           this.errCount = "请输入正确账号和密码";
-           this.$refs.myuser.style = "border-color:red";
-           this.$refs.mypass.style = "border-color:red";
+          this.$refs.myuser.style = "border-color:red";
+          this.$refs.mypass.style = "border-color:red";
         }
       }
-    }
-    ,
+    },
     cluser() {
       this.username = "";
       this.isuserflag = !this.isuserflag;
@@ -258,8 +247,8 @@ export default {
     clpass() {
       this.password = "";
       this.ispassflag = !this.ispassflag;
-    },
     }
+  }
 };
 </script>
 
