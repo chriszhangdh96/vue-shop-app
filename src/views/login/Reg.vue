@@ -205,21 +205,6 @@ export default {
           this.passcount = "请输入正确密码";
         }
       }
-
-      /* if (this.username == "" || this.password == "") {
-        this.usercount = "请输入正确账号";
-        this.$refs.myuser.style = "border-color:red";
-        this.passcount = "密码由6-12位数字组成，没有英文";
-          this.$refs.mypass.style = "border-color:red";
-      } else {
-
-        if (this.password == "") {
-          this.passcount = "密码由6-12位数字组成，没有英文";
-          this.$refs.mypass.style = "border-color:red";
-        } else {
-          
-        }
-      } */
     },
     login() {
       this.$router.push({
