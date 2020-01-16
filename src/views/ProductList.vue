@@ -106,6 +106,7 @@ export default {
                 pagesize:6
             }
         }).then(res=>{
+            // <van-loading type="spinner" color="#1989fa" />
             console.log(res.data.message)
             this.list = res.data.message.goods           
         })
