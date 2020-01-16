@@ -46,7 +46,7 @@
     </div>
     <div>
       <ul class="list">
-        <li>
+        <li @click="change_address()">
           收货地址管理
           <span>
             <van-icon name="arrow" />
@@ -111,9 +111,7 @@ export default {
          authorization:'Bearer ' + localStorage.getItem("token") 
       }
     }).then(res=>{
-      console.log(res.data)
       this.username = res.data.userName
-      
       this.$refs.userimg.src = res.data.avatar
     })
   },
@@ -152,6 +150,11 @@ export default {
       this.$router.push({
         name: "people_change"
       });
+    },
+    change_address(){
+      this.$router.push({
+        name:"address_list"
+      })
     }
   }
 };
