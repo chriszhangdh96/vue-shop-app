@@ -150,7 +150,6 @@ const routes = [{
     component:AddressEdit
   }
 ]
-
 // 创建路由对象
 const router = new VueRouter({
   routes
@@ -167,9 +166,7 @@ router.beforeEach((to, from, next) => {
   }else{
     next()
   }
-
 })
-
 function isLogin() {
   if (localStorage.getItem('token')) {
     return true
