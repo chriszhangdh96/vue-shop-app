@@ -146,7 +146,7 @@ const routes = [{
   ,
   {
     path:'/addressEdit',
-    name:'addressEdity',
+    name:'addressEdit',
     component:AddressEdit
   }
 ]
