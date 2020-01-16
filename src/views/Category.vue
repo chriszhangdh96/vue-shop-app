@@ -12,13 +12,13 @@
             </div>
             </div>
             <div class="right">
-               <div class="right_title" v-for="v in rightList" :key="v.id">
-                   <h3>{{v.cat_name}}</h3>
-                   <div class="right_conter" v-for="i in v.children" :key="i.id" @click="toprolist(i.cat_id)">
-                       <img :src="i.cat_icon" />
-                       <p>{{i.cat_name}}</p>
-                   </div>
-               </div>
+                <div class="right_title" v-for="v in rightList" :key="v.id">
+                    <h3>{{v.cat_name}}</h3>
+                    <div class="right_conter" v-for="i in v.children" :key="i.id" @click="toprolist(i.cat_id)">
+                        <img :src="i.cat_icon" />
+                        <p>{{i.cat_name}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@ export default {
     html,body{
         height: 100%;
     }
-    
+
     .category{
         margin-bottom:50px;
         height: 100%;
