@@ -14,8 +14,10 @@ import remai from '../views/shoucang/remai.vue'
 import jijiang from '../views/shoucang/jijiang.vue'
 // import ProductList from '../views/ProductList'
 
-
+// import Change_address from '../views/Change_address.vue' 写多了这个没用了
 import People_change from '../views/People_change'
+import Add_address from '../views/Add_address'
+import Address_list from '../views/Address_list'
 
 import Order from '../views/Order'
 import Goods_list from '../views/Goods_list'
@@ -54,16 +56,15 @@ const routes = [{
       {
         path: '/cart',
         name: 'cart',
-        component: Cart
+        component: Cart,
+        meta: {
+          needLogin: true
+        },
       },
       {
         path: '/user',
         name: 'user',
-        component: User,
-        meta: {
-          needLogin: true
-        },
-        
+        component: User,   
       },
     ]
   },
@@ -91,8 +92,6 @@ const routes = [{
     path: '/sousuo',
     name: 'sousuo',
     component: Sousuo,
-
-
   },
   {
     path: '/detail',
@@ -126,7 +125,10 @@ const routes = [{
   {
     path: '/order',
     name: 'order',
-    component: Order
+    component: Order,
+    meta: {
+      needLogin: true
+    },
   },
   {
     path: '/goods_list',
@@ -149,6 +151,32 @@ const routes = [{
     name:'addressEdit',
     component:AddressEdit
   }
+  ,
+  // {
+  //   path:'/change_address',
+  //   name:'change_address',
+  //   component:Change_address,
+  //   children:[
+  //     {
+  //       path:'/address_list',
+  //       name:'address_list',
+  //       component:Address_list
+  //      }
+  //   ]
+  // },
+  {
+      path:'/add_address',
+      name:'add_address',
+      component:Add_address
+     },
+     {
+      path:'/address_list',
+      name:'address_list',
+      component:Address_list
+     }
+
+
+
 ]
 // 创建路由对象
 const router = new VueRouter({

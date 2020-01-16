@@ -39,7 +39,7 @@ export default {
 
             let key = url.substr(index + 1,url.length);
 
-            this.$router.push({name:'productlist',query:{key:key}})
+            this.$router.push({name:'goods_list',query:{key:key}})
         }
     },
     mounted(){

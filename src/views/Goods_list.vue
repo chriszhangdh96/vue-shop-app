@@ -47,6 +47,8 @@ export default {
         params: {
           cid: this.$route.query.id,
           pagenumber: this.pagenumber,
+          query:this.$route.query.key,
+
         //   pagesize: 8,
         }
       })
@@ -65,7 +67,7 @@ export default {
         params: {
           cid: this.$route.query.id,
           pagenumber: this.pagenumber,
-        //   pagesize: 8,
+          query:this.$route.query.key,
         }
       })
       .then(res => {
