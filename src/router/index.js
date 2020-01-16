@@ -24,7 +24,7 @@ import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
-
+import AddressEdit from '../views/AddressEdit'
 
 Vue.use(VueRouter)
 
@@ -143,7 +143,12 @@ const routes = [{
     name:'pay',
     component:Pay
   }
-
+  ,
+  {
+    path:'/addressEdit',
+    name:'addressEdity',
+    component:AddressEdit
+  }
 ]
 
 // 创建路由对象
