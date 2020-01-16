@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cart">
         <div class="list" v-show="flag" v-for="(item,index) in carlist" :key="item.id">
             <!-- <van-switch v-model="item.selected" class="switch" size="14px"/> -->
             <van-checkbox
@@ -102,8 +102,6 @@ export default {
                     this.checked=false
                 }
             })
-
-            
         },
         //全选
         quan(){
@@ -141,16 +139,22 @@ export default {
         toshopping(){
             localStorage.setItem('topaylist','[]')
             let topaylist=JSON.parse(localStorage.getItem('topaylist'))
-            this.carlist.forEach(item=>{
-                //console.log(item)
-                if(item.selected==true){
-                        //console.log(topaylist)
-                        //console.log(item)
-                        topaylist.push(item)
-                        localStorage.setItem('topaylist',JSON.stringify(topaylist))
-                        //console.log(topaylist)
+            for(var i=0;i<this.carlist.length;i++){
+                var shoplist={
+                    id:this.carlist[i].id,
+                    count:this.$refs.mycount[i].currentValue,
+                    price:this.carlist[i].price,
+                    pimg:this.carlist[i].pimg,
+                    pname:this.carlist[i].pname,
+                    selected:this.carlist[i].selected
                 }
-            })
+                console.log(shoplist.selected)
+                if(shoplist.selected==true){
+                        // this.countchange(i,this.carlist[i].id)
+                        topaylist.push(shoplist)
+                        localStorage.setItem('topaylist',JSON.stringify(topaylist))
+                }
+            }
         }
     },
     created(){
@@ -173,9 +177,15 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <style scoped>
+    .cart{
+        margin-top: 50px;
+    }
     .list img{
         width: 60px;
         height: 60px;
@@ -243,9 +253,9 @@ export default {
        height: 40px;
        width: 180px;
         float: left;
-        margin-left: 60px;
+        margin-left: 10px;
         margin-top: 30px;
-        text-align: left;
+        text-align: center;
         font-size: 24px;
         color: red;
    }

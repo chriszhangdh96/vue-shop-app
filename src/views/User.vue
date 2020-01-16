@@ -4,15 +4,14 @@
 
     <h3 @click="login()" v-show="!flag">登录</h3>
     <div class="u-login" v-show="flag">
-       <div class="box2">
+        <div class="box2">
         <div> <van-uploader v-model="fileList" multiple  :max-count="1" class="headpic"/></div>
             <!-- <img  src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg" alt="">       -->
         </div>
-      
+
         <div @click="alertHandle">
             我是用户名
         </div>
-        
     </div>
     <div class="u-top">
         <ul>
@@ -95,19 +94,13 @@ export default {
       flag:'',
       mouseOver:'false',
       thespan:0,
-      listsc:[
-          {index:0,name:'收藏店铺'},
-          {index:1,name:'收藏的商品'},
-          {index:2,name:'关注的商品'},
-          {index:3,name:'我的足迹'},
-      ],
-      show: false,  
+      show: false,
       flag2:'',
       fileList: [
         { url: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg' },
         // Uploader 根据文件后缀来判断是否为图片文件
         // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      
+
       ]
     };
   },
@@ -118,13 +111,6 @@ export default {
     }else{
             this.flag = false
     }
-    this.listsc.forEach(item=>{
-      this.thespan=1
-      //console.log(item)
-      if(item.index==1){
-        this.thespan=0
-      }
-    })
 
   },
   methods: {
@@ -149,7 +135,7 @@ export default {
         this.$router.push({
           name:'cang',
         })
-    }
+    
     },
     tofeedback(){
       this.$router.push({
@@ -166,7 +152,8 @@ export default {
       this.$router.push({
         name:'order'
       })
-    },
+    }
+  }
 };
 </script>
 
