@@ -6,7 +6,7 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <div class="goodsUser">
+    <div class="goodsUser" @click="addressEdit">
       <div>
         <p>收货人：{{ username }}</p>
         <p>{{ address }}</p>
@@ -36,10 +36,9 @@
     </div>
   </div>
 </template>
-      <van-button type="danger"
-        >支付({{ $store.getters.getgoodscountandmount.count }})</van-button
-      >
+<script>
 import axios from "axios";
+import { Dialog } from "vant";
 export default {
   created() {
     let carts = JSON.parse(localStorage.getItem("topaylist"));
@@ -75,7 +74,16 @@ export default {
     onClickLeft() {
       history.go(-1);
     },
-    onSubmit() {}
+    onSubmit() {
+      Dialog.alert({
+        message: "支付成功"
+      }).then(() => {});
+    },
+    addressEdit(){
+      this.$router.push({
+        name:'addressEdit'
+      })
+    }
   }
 };
 </script>
