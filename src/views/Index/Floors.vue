@@ -13,7 +13,7 @@
                         v-for="v in item.product_list"
                         :key="v.id"
                     >
-                        <img :src="v.image_src" class=""/>
+                        <img :src="v.image_src" class="" @click="toProductList(v.navigator_url)"/>
                     </div>
                 </div>
             </div>
@@ -32,6 +32,16 @@ export default {
             list:[]
         }
     },
+    methods:{
+        toProductList(url){
+
+            let index = url.indexOf('=');
+
+            let key = url.substr(index + 1,url.length);
+
+            this.$router.push({name:'productlist',query:{key:key}})
+        }
+    },
     mounted(){
         axios.get('https://api.zbztb.cn/api/public/v1/home/floordata')
         .then(res=>{
@@ -39,6 +49,8 @@ export default {
         })
     }
 }
+
+
 </script>
 
 <style scoped>

@@ -62,6 +62,11 @@ export default {
         }
     },
     methods:{
+        pay(){
+        this.$router.push({
+        name: "pay"
+      })
+        },
         getgoodslist(){
             this.carlist=localStorage.getItem('car')
             console.log(carlist)
@@ -84,7 +89,7 @@ export default {
             this.$store.commit('updatagoodsinfo',{
                 id:id,
                 count:this.$refs.mycount[index].currentValue
-                })
+            })
         },
         remove(id,index){
             //点击删除，ID从本地删除，index从购物车删除
@@ -154,8 +159,11 @@ export default {
                         topaylist.push(shoplist)
                         localStorage.setItem('topaylist',JSON.stringify(topaylist))
                 }
+                this.$router.push({
+                    name:'pay'
+                })
             }
-        }
+    }
     },
     created(){
          this.carlist=JSON.parse(localStorage.getItem('car'))

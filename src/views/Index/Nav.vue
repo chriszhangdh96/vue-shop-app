@@ -6,7 +6,7 @@
                 v-for="item in list"
                 :key="item.id"
             >
-                <van-image :src="item.image_src" />
+                <van-image :src="item.image_src" @click="tofenlei"/>
             </van-grid-item>
         </van-grid>
 
@@ -20,6 +20,12 @@ export default {
     data(){
         return {
             list:[]
+        }
+    },
+    methods:{
+        tofenlei(){
+            this.$router.push('/Category')
+            this.$store.commit('changeIndex1')
         }
     },
     mounted(){

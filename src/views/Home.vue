@@ -13,7 +13,7 @@
 
         <van-tabbar
             active-color= red 
-            v-model="active"
+            v-model="$store.state.TabbearIndex"
         >
             <!-- 导航标签 -->
             <div class="ball" v-show="flag">{{$store.getters.getAllCount}}</div>
@@ -32,7 +32,6 @@ export default {
     name:'Index',
     data(){
         return {
-            active:0,
             title:'首页',
             flag:true
         }
@@ -54,6 +53,9 @@ export default {
 </script>
 
 <style scoped>
+    /* .van-nav-bar--fixed{
+        background: lightblue
+    } */
     #container{
 		margin-top: 46px;
 		margin-bottom: 50px;

@@ -1,4 +1,13 @@
 var mutations = {
+    // 改变Home下图标分类点击状态索引
+    changeIndex1(state){
+        state.TabbearIndex = 1;
+    },
+    // 改变Home下图标购物车点击状态索引
+    changeIndex2(state){
+        state.TabbearIndex = 2;
+    },
+    
     //加入购物车
     addTocar(state,goodsinfo){
         //点击加入购物车,吧商品信息保存到car上
@@ -18,6 +27,7 @@ var mutations = {
         }
 
         localStorage.setItem('car',JSON.stringify(state.car))
+
     },
 
     //修改购物车的值

@@ -79,11 +79,14 @@ export default {
         }
     },
     methods:{
+        //购物车
         tocart(){
             this.$router.push({
                 name:'cart'
             })
+            this.$store.commit('changeIndex2')
         },
+        //加入购物车
         tocar(){
             var goodsinfo={
                 id:this.id,

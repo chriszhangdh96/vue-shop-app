@@ -51,7 +51,8 @@ export default {
             this.xuanzhong=i
         },
         toprolist(id){
-            this.$router.push({name:'productlist',query:{id:id}})
+            // this.$router.push({name:'productlist',query:{id:id}})
+             this.$router.push({name:'goods_list',query:{id:id}})
         }
     },
     mounted(){
