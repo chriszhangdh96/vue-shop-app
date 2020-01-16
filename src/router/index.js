@@ -142,6 +142,11 @@ const routes = [{
     path:'/pay',
     name:'pay',
     component:Pay
+  },
+  {
+    path:'/addressEdit',
+    name:'addressEdit',
+    component:AddressEdit
   }
 
 ]

@@ -36,7 +36,9 @@
     </div>
   </div>
 </template>
-<script>
+      <van-button type="danger"
+        >支付({{ $store.getters.getgoodscountandmount.count }})</van-button
+      >
 import axios from "axios";
 export default {
   created() {
