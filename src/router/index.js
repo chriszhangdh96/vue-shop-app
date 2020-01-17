@@ -27,6 +27,9 @@ import Pay from '../views/Pay'
 
 import Foot from '../views/shoucang/foot.vue'
 
+import Aboutus from '../views/Aboutus'
+
+
 
 Vue.use(VueRouter)
 
@@ -143,8 +146,11 @@ const routes = [{
     path:'/pay',
     name:'pay',
     component:Pay
+  },{
+    path:'/aboutus',
+    name:'aboutus',
+    component:Aboutus
   }
-
 ]
 
 // 创建路由对象
