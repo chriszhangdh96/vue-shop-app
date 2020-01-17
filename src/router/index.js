@@ -144,21 +144,13 @@ const routes = [{
     path:'/pay',
     name:'pay',
     component:Pay
-<<<<<<< HEAD
   },
-=======
-  }
-  ,
->>>>>>> hmy
   {
     path:'/addressEdit',
     name:'addressEdit',
     component:AddressEdit
   }
-<<<<<<< HEAD
-=======
   ,
->>>>>>> hmy
   // {
   //   path:'/change_address',
   //   name:'change_address',
