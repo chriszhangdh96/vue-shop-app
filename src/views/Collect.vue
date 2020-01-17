@@ -10,7 +10,6 @@
             <van-tab title="商品收藏">
                 <van-tabs type="card">
                     <van-tab title="全部" :to="{name:'cang'}">
-                        <router-view/>
                     </van-tab>
                     <van-tab title="正在热卖" :to="{name:'remai'}"></van-tab>
                     <van-tab title="即将上线" :to="{name:'jijiang'}"></van-tab>
