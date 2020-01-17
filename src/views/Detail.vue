@@ -189,7 +189,13 @@ export default {
                 }
             })
             }
-            
+            var footlist={
+                id:this.id,
+                price:this.price,
+                pimg:this.pimg,
+                pname:this.pname
+            }
+            this.$store.commit('addTofoot',footlist)
         })
     },
     created(){
@@ -198,9 +204,6 @@ export default {
         // }else{
         //     this.flag=true
         // }
-
-        
-
     },
     watch:{
         '$route'(newval){
