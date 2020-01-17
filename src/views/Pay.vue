@@ -30,8 +30,8 @@
     </div>
     <div class="goodsSubmit">
       <span>合计</span>
-      <span>¥：{{ $store.getters.getgoodscountandmount.amout }}</span>
-      <van-button type="danger">支付</van-button>
+      <span>¥：{{$store.getters.getgoodscountandmount.amout}}</span>
+      <van-button type="danger">支付({{$store.getters.getgoodscountandmount.count}})</van-button>
       <!-- <van-submit-bar  :price="$store.getters.getgoodscountandmount.amout" button-text="支付" @submit="onSubmit" /> -->
     </div>
   </div>

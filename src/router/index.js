@@ -27,9 +27,11 @@ import Pay from '../views/Pay'
 
 import Foot from '../views/shoucang/foot.vue'
 
-import Aboutus from '../views/Aboutus'
+import Add_address from '../views/Add_address'
+import Address_list from '../views/Address_list'
+import AddressEdit from '../views/AddressEdit'
 
-
+import Aboutus  from '../views/Aboutus'
 
 Vue.use(VueRouter)
 
@@ -151,6 +153,26 @@ const routes = [{
     name:'aboutus',
     component:Aboutus
   }
+  ,
+  {
+    path:'/address_list',
+    name:'address_list',
+    component:Address_list
+  }
+  ,
+  {
+    path:'/add_address',
+    name:'add_address',
+    component:Add_address
+  }
+  ,
+  {
+    path:'/addressEdit',
+    name:'addressEdit',
+    component:AddressEdit
+  }
+  
+
 ]
 
 // 创建路由对象
