@@ -1,5 +1,15 @@
 <template>
     <div>
+        <div class="djs">
+            <span class="tit">天天低价</span>
+            <van-count-down :time="time">
+                <template v-slot="timeData">
+                    <span class="item">{{ timeData.hours }}</span>:
+                    <span class="item">{{ timeData.minutes }}</span>:
+                    <span class="item">{{ timeData.seconds }}</span>
+                </template>
+            </van-count-down>
+        </div>
         <!-- 楼层 开始 -->
         <div class="index_floor">
             <div class="floor_group" v-for="item in list" :key="item.id">
@@ -29,7 +39,8 @@ export default {
     name:'Floors',
     data(){
         return {
-            list:[]
+            list:[],
+            time:86400000
         }
     },
     methods:{
@@ -39,7 +50,7 @@ export default {
 
             let key = url.substr(index + 1,url.length);
 
-            this.$router.push({name:'productlist',query:{key:key}})
+            this.$router.push({name:'goods_list',query:{key:key}})
         }
     },
     mounted(){
@@ -54,6 +65,29 @@ export default {
 </script>
 
 <style scoped>
+.djs{
+    text-align: left
+}
+.djs .tit{
+    font-weight:bold ;
+    margin-left: 8px;
+    margin-right:10px 
+}
+.djs .item {
+  display: inline-block;
+  width: 22px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fc0;
+  color: black
+}
+
+.van-count-down{
+    display: inline-block
+}
+
 
 .index_floor .floor_group .floor_title{
     padding: 10px 0;

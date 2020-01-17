@@ -44,11 +44,18 @@
         <van-goods-action>
             <div class="ball" v-show="flag">{{$store.getters.getAllCount}}</div>
             <van-goods-action-icon icon="service-o" text="联系客服" />
-            <van-goods-action-icon icon="share" text="分享"  />
+            <van-goods-action-icon  icon="share" text="分享" @click="share"/>
             <van-goods-action-icon icon="shopping-cart-o" @click="tocart" text="购物车"  />
             <van-goods-action-button type="warning" @click="tocar" text="加入购物车" />
             <van-goods-action-button type="danger" text="立即购买" />
         </van-goods-action>
+        <!-- 分享按钮 -->
+        <van-action-sheet
+            v-model="show"
+            :actions="actions"
+            cancel-text="取消"
+            @cancel="onCancel"
+        />
 
 
         <!-- 点击回到顶部 -->
@@ -75,10 +82,24 @@ export default {
             // selected:true,
             list: [],
             isCollect: false,
-            flag:true
+            flag:true,
+            show:false,
+             actions: [
+                { name: '发送给微信好友' },
+                { name: '分享到微信朋友圈' },
+                { name: '分享到QQ' },
+                { name: '分享到新浪微博' }
+            ]
         }
     },
     methods:{
+        //分享
+        share(){
+            this.show = true
+        },
+        onCancel() {
+            this.show = false;
+        },
         //购物车
         tocart(){
             this.$router.push({
@@ -99,6 +120,8 @@ export default {
             this.$store.commit('addTocar',goodsinfo)
             //console.log(goodsinfo)
             this.flag=true
+            this.$toast.success('加入成功');
+            
         },
         tocollect(){
             this.isCollect=!this.isCollect

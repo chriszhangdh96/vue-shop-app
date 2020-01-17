@@ -4,13 +4,12 @@
 
     <h3 @click="login()" v-show="!flag">登录</h3>
     <div class="u-login" v-show="flag">
-      <div>
-        <div class="box2">
-          <van-uploader v-model="fileList" multiple :max-count="1" class="headpic" />
-        </div>
+      <div class="box2">
+        <img
+          src="" ref="userimg"
+        />
       </div>
-
-      <div @click="alertHandle()">我是用户名</div>
+      <div @click="alertHandle()">{{username}}</div>
     </div>
     <div class="u-top">
       <ul>
@@ -46,7 +45,7 @@
     </div>
     <div>
       <ul class="list">
-        <li>
+        <li @click="change_address()">
           收货地址管理
           <span>
             <van-icon name="arrow" />
@@ -62,7 +61,7 @@
             <van-icon name="arrow" />
           </span>
         </li>
-        <li>
+        <li @click="toaboutus">
           关于我们
           <span>
             <van-icon name="arrow" />
@@ -81,7 +80,7 @@
 
 
 <script>
-import Axios from "axios";
+import axios from "axios";
 import ImagePreview from "vant";
 
 export default {
@@ -95,14 +94,8 @@ export default {
       thespan: 0,
       show: false,
       flag2: "",
-      fileList: [
-        {
-          url:
-            "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1578664411&di=8ad737b052da49b6ed1eede69e5184be&src=http://b-ssl.duitang.com/uploads/item/201610/01/20161001161842_vyxNC.thumb.700_0.jpeg"
-        }
-        // Uploader 根据文件后缀来判断是否为图片文件
-        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      ]
+      username:'',
+      
     };
   },
   mounted() {
@@ -112,6 +105,14 @@ export default {
     } else {
       this.flag = false;
     }
+    axios.get("http://api.cat-shop.penkuoer.com/api/v1/users/info",{
+      headers:{
+         authorization:'Bearer ' + localStorage.getItem("token") 
+      }
+    }).then(res=>{
+      this.username = res.data.userName
+      this.$refs.userimg.src = res.data.avatar
+    })
   },
   methods: {
     login() {
@@ -145,6 +146,9 @@ export default {
         name: "order"
       });
     },
+    toaboutus(){
+      this.$router.push('/aboutus')
+    }, 
     topeopleChange() {
       this.$router.push({
         name: "people_change"
@@ -155,6 +159,12 @@ export default {
         name:'cang'
       })
       this.$store.commit('changeTab')
+
+    },
+    change_address(){
+      this.$router.push({
+        name:"address_list"
+      })
     }
   }
 };
@@ -215,18 +225,16 @@ export default {
 .u-top span {
   color: crimson;
 }
-.u-login {
-  height: 80px;
-margin: 0 auto
-}
-.box2 {
-   width: 50px;
+
+.box2,img {
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
+  margin: 6px auto 10px;
+ 
 }
 .active {
   background-color: darkgray;
 }
-
 </style>
