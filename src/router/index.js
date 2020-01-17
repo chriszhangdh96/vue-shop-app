@@ -27,7 +27,9 @@ import Pay from '../views/Pay'
 
 import Foot from '../views/shoucang/foot.vue'
 
-
+import Add_address from '../views/Add_address'
+import Address_list from '../views/Address_list'
+import AddressEdit from '../views/AddressEdit'
 Vue.use(VueRouter)
 
 // 路由规则
@@ -144,6 +146,25 @@ const routes = [{
     name:'pay',
     component:Pay
   }
+  ,
+  {
+    path:'/address_list',
+    name:'address_list',
+    component:Address_list
+  }
+  ,
+  {
+    path:'/add_address',
+    name:'add_address',
+    component:Add_address
+  }
+  ,
+  {
+    path:'/addressEdit',
+    name:'addressEdit',
+    component:AddressEdit
+  }
+  
 
 ]
 
