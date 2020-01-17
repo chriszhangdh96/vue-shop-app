@@ -40,7 +40,6 @@ export default {
   created() {
     let data = this.$route.query._id;
     this.id = data;
-    console.log(data);
     axios
       .get("http://api.cat-shop.penkuoer.com/api/v1/addresses/" + data, {
         headers: {
@@ -50,18 +49,17 @@ export default {
       .then(res => {
         console.log(res.data);
        this.AddressInfo={
-         name:res.data.name,
+         name:res.data.receiver,
          tel:res.data.mobile,
-         province:res.data.mobile,
-         city:res.data.mobile,
-         country:res.datamobile,
-         addressDetail:res.data.detail,
+         province:'',
+         city:'',
+         country:'',
+         addressDetail:res.data.address,
          postalCode:'',
          areaCode:''
        }
       });
   },
-  mounted() {},
   methods: {
     onClickLeft() {
       history.go(-1);
@@ -70,9 +68,8 @@ export default {
       console.log(this.AddressInfo);
       axios.defaults.headers.common["authorization"] =
         "Bearer " + localStorage.getItem("token");
-
       axios
-        .put("http://api.cat-shop.penkuoer.com/api/v1/addresses/", {
+        .put("http://api.cat-shop.penkuoer.com/api/v1/addresses/" +  this.id, {
           receiver: content.name,
           mobile: content.tel,
           regions: content.province + "-" + content.city + "-" + content.county,
