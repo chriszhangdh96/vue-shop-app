@@ -81,7 +81,7 @@ export default {
     },
     addressEdit(){
       this.$router.push({
-        name:'addressEdit'
+        name:'address_list'
       })
     }
   }

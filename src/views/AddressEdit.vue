@@ -19,6 +19,7 @@
         @save="onSave"
         @delete="onDelete"
         isDefault
+        :address-info="AddressInfo"
       />
     </div>
   </div>
@@ -26,64 +27,77 @@
 
 <script>
 import axios from "axios";
+import area from "../store/area";
 export default {
   data() {
     return {
-      areaList: {
-        province_list: {
-          110000: "北京市",
-          120000: "天津市"
-        },
-        city_list: {
-          110100: "北京市",
-          110200: "县",
-          120100: "天津市",
-          120200: "县"
-        },
-        county_list: {
-          110101: "东城区",
-          110102: "西城区",
-          110105: "朝阳区",
-          110106: "丰台区",
-          120101: "和平区",
-          120102: "河东区",
-          120103: "河西区",
-          120104: "南开区",
-          120105: "河北区"
-          // ....
-        }
-      },
-      searchResult: []
+      id: "",
+      areaList: area,
+      searchResult: [],
+      AddressInfo: {}
     };
   },
-
+  created() {
+    let data = this.$route.query._id;
+    this.id = data;
+    console.log(data);
+    axios
+      .get("http://api.cat-shop.penkuoer.com/api/v1/addresses/" + data, {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(res => {
+        console.log(res.data);
+       this.AddressInfo={
+         name:res.data.name,
+         tel:res.data.mobile,
+         province:res.data.mobile,
+         city:res.data.mobile,
+         country:res.datamobile,
+         addressDetail:res.data.detail,
+         postalCode:'',
+         areaCode:''
+       }
+      });
+  },
+  mounted() {},
   methods: {
     onClickLeft() {
       history.go(-1);
     },
     onSave(content) {
-      axios.defaults.headers.common["authorization"] = "Bearer " + localStorage.getItem('token');
+      console.log(this.AddressInfo);
+      axios.defaults.headers.common["authorization"] =
+        "Bearer " + localStorage.getItem("token");
 
-      axios.put("http://api.cat-shop.penkuoer.com/api/v1/addresses/", 
-        {
+      axios
+        .put("http://api.cat-shop.penkuoer.com/api/v1/addresses/", {
           receiver: content.name,
-          mobile:content.tel,
-          regions: content.province + "-" + content.city + "-" +content. county,
+          mobile: content.tel,
+          regions: content.province + "-" + content.city + "-" + content.county,
           address: content.addressDetail,
           idDefault: content.isDefault
-        }
-      ).then(res=>{
-
-      })
+        })
+        .then(res => {
+          this.$router.push({
+            name: "address_list"
+          });
+        });
     },
-    onDelete() {
-      axios.post("http://api.cat-shop.penkuoer.com/api/v1/addresses/", {
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("token")
-        }
-      }).then(res=>{
-
-      })
+    onDelete(content) {
+      console.log(this.id)
+      axios
+        .post("http://api.cat-shop.penkuoer.com/api/v1/addresses/" + this.id, {
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("token")
+          }
+        })
+        .then(res => {
+          this.$router.push({
+            name: "address_list"
+          });
+        });
     }
   }
 };
