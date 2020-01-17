@@ -144,12 +144,6 @@ const routes = [{
     component: People_change
   },
   {
-<<<<<<< HEAD
-    path:'/pay',
-    name:'pay',
-    component:Pay
-  },
-=======
     path: '/pay',
     name: 'pay',
     component: Pay
@@ -160,7 +154,6 @@ const routes = [{
     component:Aboutus
   }
   ,
->>>>>>> c21d1d775e5a44efa447e681554baac2c4824998
   {
     path:'/addressEdit',
     name:'addressEdit',

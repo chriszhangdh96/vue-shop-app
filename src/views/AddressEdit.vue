@@ -48,16 +48,16 @@ export default {
       })
       .then(res => {
         console.log(res.data);
-       this.AddressInfo={
-         name:res.data.receiver,
-         tel:res.data.mobile,
-         province:'',
-         city:'',
-         country:'',
-         addressDetail:res.data.address,
-         postalCode:'',
-         areaCode:''
-       }
+        this.AddressInfo = {
+          name: res.data.receiver,
+          tel: res.data.mobile,
+          province: "",
+          city: "",
+          country: "",
+          addressDetail: res.data.address,
+          postalCode: "",
+          areaCode: ""
+        };
       });
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
       axios.defaults.headers.common["authorization"] =
         "Bearer " + localStorage.getItem("token");
       axios
-        .put("http://api.cat-shop.penkuoer.com/api/v1/addresses/" +  this.id, {
+        .put("http://api.cat-shop.penkuoer.com/api/v1/addresses/" + this.id, {
           receiver: content.name,
           mobile: content.tel,
           regions: content.province + "-" + content.city + "-" + content.county,
@@ -83,13 +83,16 @@ export default {
         });
     },
     onDelete(content) {
-      console.log(this.id)
       axios
-        .post("http://api.cat-shop.penkuoer.com/api/v1/addresses/" +this.$route.query._id, {
-          headers: {
-            authorization: "Bearer " + localStorage.getItem("token")
+        .post(
+          "http://api.cat-shop.penkuoer.com/api/v1/addresses/" +
+            this.$route.query._id,
+          {
+            headers: {
+              authorization: "Bearer " + localStorage.getItem("token")
+            }
           }
-        })
+        )
         .then(res => {
           this.$router.push({
             name: "address_list"
