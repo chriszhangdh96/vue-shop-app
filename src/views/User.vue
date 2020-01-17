@@ -146,10 +146,9 @@ export default {
         name: "order"
       });
     },
-<<<<<<< HEAD
     toaboutus(){
       this.$router.push('/aboutus')
-=======
+    }, 
     topeopleChange() {
       this.$router.push({
         name: "people_change"
@@ -159,7 +158,6 @@ export default {
       this.$router.push({
         name:"address_list"
       })
->>>>>>> b5e3fef6e886bf9c6cba7e3b4cb6dae95a21d1fc
     }
   }
 };

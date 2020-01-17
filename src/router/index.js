@@ -26,13 +26,10 @@ import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
-<<<<<<< HEAD
 
 import Aboutus from '../views/Aboutus'
 
-=======
 import AddressEdit from '../views/AddressEdit'
->>>>>>> b5e3fef6e886bf9c6cba7e3b4cb6dae95a21d1fc
 
 Vue.use(VueRouter)
 
@@ -147,7 +144,6 @@ const routes = [{
     component: People_change
   },
   {
-<<<<<<< HEAD
     path: '/pay',
     name: 'pay',
     component: Pay
@@ -156,26 +152,14 @@ const routes = [{
     path:'/aboutus',
     name:'aboutus',
     component:Aboutus
-=======
-    path:'/pay',
-    name:'pay',
-    component:Pay
-<<<<<<< HEAD
-  },
-=======
->>>>>>> b5e3fef6e886bf9c6cba7e3b4cb6dae95a21d1fc
   }
   ,
->>>>>>> hmy
   {
     path:'/addressEdit',
     name:'addressEdit',
     component:AddressEdit
   }
-<<<<<<< HEAD
-=======
   ,
->>>>>>> hmy
   // {
   //   path:'/change_address',
   //   name:'change_address',
