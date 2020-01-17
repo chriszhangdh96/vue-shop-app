@@ -53,9 +53,12 @@ export default {
 </script>
 
 <style scoped>
-    /* .van-nav-bar--fixed{
-        background: lightblue
-    } */
+    .van-nav-bar--fixed{
+        background: #d43c33;
+    }
+    .van-nav-bar__title{
+        color: #fff;
+    }
     #container{
 		margin-top: 46px;
 		margin-bottom: 50px;
@@ -63,7 +66,6 @@ export default {
     .nav{
         width: 100%;
         height: 50px;
-        color: #940000
     }
     .ball{
         width: 15px;

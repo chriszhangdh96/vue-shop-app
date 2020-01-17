@@ -62,7 +62,7 @@
             <van-icon name="arrow" />
           </span>
         </li>
-        <li>
+        <li @click="toaboutus">
           关于我们
           <span>
             <van-icon name="arrow" />
@@ -146,6 +146,9 @@ export default {
         name: "order"
       });
     },
+    toaboutus(){
+      this.$router.push('/aboutus')
+    }, 
     topeopleChange() {
       this.$router.push({
         name: "people_change"

@@ -26,6 +26,9 @@ import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
+
+import Aboutus from '../views/Aboutus'
+
 import AddressEdit from '../views/AddressEdit'
 
 Vue.use(VueRouter)
@@ -141,10 +144,23 @@ const routes = [{
     component: People_change
   },
   {
+<<<<<<< HEAD
     path:'/pay',
     name:'pay',
     component:Pay
   },
+=======
+    path: '/pay',
+    name: 'pay',
+    component: Pay
+  },
+  {
+    path:'/aboutus',
+    name:'aboutus',
+    component:Aboutus
+  }
+  ,
+>>>>>>> c21d1d775e5a44efa447e681554baac2c4824998
   {
     path:'/addressEdit',
     name:'addressEdit',
