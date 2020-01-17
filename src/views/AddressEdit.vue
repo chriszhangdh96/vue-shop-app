@@ -85,7 +85,7 @@ export default {
     onDelete(content) {
       console.log(this.id)
       axios
-        .post("http://api.cat-shop.penkuoer.com/api/v1/addresses/" + this.id, {
+        .post("http://api.cat-shop.penkuoer.com/api/v1/addresses/" +this.$route.query._id, {
           headers: {
             authorization: "Bearer " + localStorage.getItem("token")
           }
