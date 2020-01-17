@@ -165,7 +165,7 @@ export default {
     created(){
          this.carlist=JSON.parse(localStorage.getItem('car'))
             //console.log(this.carlist)
-            if(this.carlist){
+            if(this.carlist && this.carlist!=[]){
                this.flag=true
             }else{
                 this.flag=false

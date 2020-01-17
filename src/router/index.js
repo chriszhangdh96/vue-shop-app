@@ -22,6 +22,8 @@ import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
 
+import Aboutus from '../views/Aboutus'
+
 
 Vue.use(VueRouter)
 
@@ -136,6 +138,11 @@ const routes = [
     path: '/pay',
     name: 'pay',
     component: Pay
+  },
+  {
+    path:'/aboutus',
+    name:'aboutus',
+    component:Aboutus
   }
 ]
 
