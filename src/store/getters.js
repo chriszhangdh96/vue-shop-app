@@ -26,6 +26,10 @@ var getters = {
         return o
     },
 
+
+    getfootlistlength(state){
+        return state.foot.length
+    },
     //
     getgoodscountandmount(state){
         var o={

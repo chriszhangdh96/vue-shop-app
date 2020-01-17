@@ -27,9 +27,8 @@
           <div class="sc">关注的商品</div>
         </li>
         <li>
-          <span>0</span>
-          <span></span>
-          <div class="sc">收藏的店铺</div>
+          <span>{{$store.getters.getfootlistlength}}</span>
+          <div class="sc" @click="tofoot">我的足迹</div>
         </li>
       </ul>
     </div>
@@ -127,7 +126,8 @@ export default {
     tocollect() {
       this.$router.push({
         name: "cang"
-      });
+      })
+      this.$store.commit('changeTabto1')
     },
     tofeedback() {
       this.$router.push({
@@ -149,6 +149,12 @@ export default {
       this.$router.push({
         name: "people_change"
       });
+    },
+    tofoot(){
+      this.$router.push({
+        name:'cang'
+      })
+      this.$store.commit('changeTab')
     }
   }
 };

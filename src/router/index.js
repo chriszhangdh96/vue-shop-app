@@ -25,6 +25,8 @@ import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
 
+import Foot from '../views/shoucang/foot.vue'
+
 
 Vue.use(VueRouter)
 

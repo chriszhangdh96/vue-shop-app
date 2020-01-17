@@ -7,7 +7,13 @@ var mutations = {
     changeIndex2(state){
         state.TabbearIndex = 2;
     },
-    
+    //改变foot页面进入时的下标
+    changeTab(state){
+        state.footTab=3
+    },
+    changeTabto1(state){
+        state.footTab=0
+    },
     //加入购物车
     addTocar(state,goodsinfo){
         //点击加入购物车,吧商品信息保存到car上
@@ -28,6 +34,21 @@ var mutations = {
 
         localStorage.setItem('car',JSON.stringify(state.car))
 
+    },
+
+    // 加入浏览足迹
+    addTofoot(state,footslist){
+        state.foot.unshift(footslist)
+        let obj = {};
+        state.foot = state.foot.reduce((item, next) => {
+        if (!obj[next.id]) {
+        item.push(next);
+        obj[next.id] = true;
+        }
+        return item;
+        }, []);
+    console.log(state.foot);
+        localStorage.setItem('foot',JSON.stringify(state.foot))
     },
 
     //修改购物车的值
@@ -52,6 +73,21 @@ var mutations = {
             }
         })
         localStorage.setItem('car',JSON.stringify(state.car))
+    },
+    //删除浏览历史
+    removefoot(state,id){
+        state.foot.some((item,index)=>{
+            if(item.id==id){
+                state.foot.splice(index,1)
+                return true
+            }
+        })
+        localStorage.setItem('foot',JSON.stringify(state.foot))
+    },
+
+    //清除全部
+    removeAll(state){
+        localStorage.setItem('foot','[]')
     },
     //改变按钮状态
     updatagoodsselected(state,info){
@@ -96,10 +132,6 @@ var mutations = {
             }
         })
         localStorage.setItem('shop',JSON.stringify(state.shop))
-    },
-    //去结算
-    toshoping(state){
-        state.car.forEach()
     }
 }
 
