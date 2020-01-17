@@ -40,7 +40,7 @@ export default {
         this.$router.push({
             name:'addressEdit',
             query:{
-               id:item.id
+               _id:item._id
             }
         })
     }
@@ -70,7 +70,8 @@ export default {
                     id:this.count+=1,
                     name:res.data.receiver,
                     tel:res.data.mobile,
-                    address:res.data.address
+                    address:res.data.address,
+                    _id:res.data._id
                 })
             });
         });

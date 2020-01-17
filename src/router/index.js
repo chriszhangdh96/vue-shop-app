@@ -26,7 +26,7 @@ import Reg from '../views/login/Reg'
 import Login from '../views/login/Login'
 import Feedback from '../views/Feedback'
 import Pay from '../views/Pay'
-
+import AddressEdit from '../views/AddressEdit'
 
 Vue.use(VueRouter)
 
@@ -144,12 +144,21 @@ const routes = [{
     path:'/pay',
     name:'pay',
     component:Pay
+<<<<<<< HEAD
   },
+=======
+  }
+  ,
+>>>>>>> hmy
   {
     path:'/addressEdit',
     name:'addressEdit',
     component:AddressEdit
   }
+<<<<<<< HEAD
+=======
+  ,
+>>>>>>> hmy
   // {
   //   path:'/change_address',
   //   name:'change_address',
@@ -176,7 +185,6 @@ const routes = [{
 
 
 ]
-
 // 创建路由对象
 const router = new VueRouter({
   routes
@@ -193,9 +201,7 @@ router.beforeEach((to, from, next) => {
   }else{
     next()
   }
-
 })
-
 function isLogin() {
   if (localStorage.getItem('token')) {
     return true
