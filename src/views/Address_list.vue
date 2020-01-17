@@ -89,7 +89,6 @@ export default {
     //   });
     //   }, 1000);
     // }
-  
   },
   beforeMount() {
     axios.defaults.headers.common["authorization"] =
